@@ -161,13 +161,18 @@ main,
 .hero {
   position: relative;
   min-height: 100vh;
-  padding: 34px clamp(20px, 5vw, 70px) 0;
+  padding: 0;
   background: var(--pink);
   color: #fff;
   overflow: hidden;
 }
 
 .hero-meta {
+  position: absolute;
+  top: 34px;
+  left: clamp(20px, 5vw, 70px);
+  right: clamp(20px, 5vw, 70px);
+  z-index: 4;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -176,7 +181,7 @@ main,
 }
 
 .hero-title {
-  margin: 34px 0 18px;
+  margin: 0 0 18px;
   text-align: center;
   font-family: var(--serif);
   font-weight: 400;
@@ -198,12 +203,13 @@ main,
 }
 
 .scratch-wrap {
-  position: relative;
-  width: min(980px, 92%);
-  height: clamp(190px, 27vw, 300px);
-  margin: 8px auto 0;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 4px;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -212,9 +218,9 @@ main,
   inset: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 4px;
   background: #161616;
-  transform: rotate(-1.5deg) scale(1.06);
+  transform: rotate(-2deg) scale(1.1);
 }
 
 .scratch-collage img {
@@ -227,6 +233,7 @@ main,
 #scratch-canvas {
   position: absolute;
   inset: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
   cursor: crosshair;
@@ -240,17 +247,23 @@ main,
   display: grid;
   place-content: center;
   gap: 6px;
+  padding: 80px 20px 140px;
   text-align: center;
   pointer-events: none;
 }
 
-.scratch-copy span {
+.scratch-words {
+  display: grid;
+  gap: 6px;
+}
+
+.scratch-words span {
   font-family: var(--serif);
   font-size: clamp(20px, 3vw, 36px);
   font-weight: 300;
 }
 
-.scratch-copy strong {
+.scratch-words strong {
   font-family: var(--serif);
   font-size: clamp(18px, 3.4vw, 44px);
   font-weight: 400;
@@ -259,8 +272,8 @@ main,
 
 .scratch-reset {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  right: 24px;
+  bottom: 92px;
   z-index: 4;
   padding: 7px 12px;
   border: 1px solid #fff;
@@ -273,8 +286,8 @@ main,
 
 .scratch-hint {
   position: absolute;
-  left: 14px;
-  bottom: 14px;
+  left: 24px;
+  bottom: 96px;
   z-index: 4;
   font-size: 10px;
   letter-spacing: 1px;
@@ -282,36 +295,47 @@ main,
 }
 
 .hero-enter {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 26px auto 0;
   width: 62px;
   height: 62px;
+  margin: 0;
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   font-size: 11px;
   line-height: 1.2;
   text-align: center;
+  transform: translateX(-50%);
   transition: transform 240ms ease, background 240ms ease;
 }
 
 .hero-enter:hover {
-  transform: translateY(4px);
+  transform: translateX(-50%) translateY(4px);
   background: rgba(255, 255, 255, 0.16);
 }
 
 .hero-bottom {
-  margin: 30px calc(clamp(20px, 5vw, 70px) * -1) 0;
-  padding: 12px 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  margin: 0;
+  padding: 6px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   font-family: var(--serif);
-  font-size: clamp(32px, 7vw, 96px);
+  font-size: clamp(24px, 5vw, 72px);
   line-height: 1;
   letter-spacing: -3px;
   white-space: nowrap;
   opacity: 0.95;
+  pointer-events: none;
 }
 
 .marquee {
