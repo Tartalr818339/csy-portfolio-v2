@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121g';
+import { siteMeta, units } from './data.js?v=20261121h';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -230,7 +230,7 @@ function initRailAutoScroll() {
   function loop() {
     if (!paused && Date.now() > railPauseUntil && modal.hidden && grid.scrollWidth > grid.clientWidth) {
       const max = grid.scrollWidth - grid.clientWidth;
-      let next = grid.scrollLeft + 1.6 * direction;
+      let next = grid.scrollLeft + 0.9 * direction;
       if (next >= max) {
         next = max;
         direction = -1;
