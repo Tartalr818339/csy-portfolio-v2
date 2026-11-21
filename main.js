@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121j';
+import { siteMeta, units } from './data.js?v=20261121k';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -12,9 +12,17 @@ const categoryMap = {
   modeling: '空间设计',
   installation: '装置艺术',
   ip: 'IP设计',
+  huaxia: '展板设计',
+  zhihui: '空间设计',
+  dorm: '空间设计',
+  bloom: '装置艺术',
+  wedding: '空间设计',
 };
-const categoryOf = (unit) => categoryMap[unit.id] || '其他作品';
-const categories = [...new Set(workUnits.map(categoryOf))];
+const categoryOf = (unit) => (unit.id.startsWith('sketch-') ? '手绘作品' : categoryMap[unit.id] || '其他作品');
+const isDrawing = (unit) => categoryOf(unit) === '手绘作品';
+const carouselUnits = workUnits.filter((unit) => !isDrawing(unit));
+const drawingUnits = workUnits.filter(isDrawing);
+const categories = [...new Set([...carouselUnits.map(categoryOf), '手绘作品'])];
 
 const grid = document.querySelector('#work-grid');
 const filters = document.querySelector('#work-filters');
@@ -76,9 +84,14 @@ function renderFilters() {
 }
 
 function renderWorks(filter = '全部') {
-  const list = workUnits.filter((unit) => filter === '全部' || categoryOf(unit) === filter);
-  const loop = list.length >= 5;
+  const isDrawingFilter = filter === '手绘作品';
+  const source = isDrawingFilter ? drawingUnits : carouselUnits;
+  const list = source.filter((unit) => filter === '全部' || isDrawingFilter || categoryOf(unit) === filter);
+  const loop = !isDrawingFilter && list.length >= 5;
   grid.dataset.loop = loop ? 'true' : 'false';
+  grid.dataset.static = isDrawingFilter ? 'true' : 'false';
+  grid.classList.toggle('is-static', isDrawingFilter);
+  document.querySelector('.rail-actions')?.classList.toggle('is-hidden', isDrawingFilter);
 
   const cardMarkup = (unit, clone = false) => {
     const image = unit.hotspots[0]?.image || '';
@@ -231,7 +244,7 @@ function initRailAutoScroll() {
   grid.addEventListener('scroll', updateFocus);
 
   function loop() {
-    if (!paused && Date.now() > railPauseUntil && modal.hidden && grid.scrollWidth > grid.clientWidth) {
+    if (!paused && grid.dataset.static !== 'true' && Date.now() > railPauseUntil && modal.hidden && grid.scrollWidth > grid.clientWidth) {
       if (grid.dataset.loop === 'true') {
         const half = grid.scrollWidth / 2;
         let next = grid.scrollLeft + 0.9;

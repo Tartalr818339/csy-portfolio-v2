@@ -817,6 +817,30 @@ main,
   display: none;
 }
 
+.work-rail.is-static {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  overflow: visible;
+}
+
+.work-rail.is-static .work-card {
+  flex: initial;
+  width: 100%;
+  transform: none;
+  opacity: 1;
+}
+
+.work-rail.is-static .work-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #111;
+}
+
+.rail-actions.is-hidden {
+  display: none;
+}
+
 .work-card {
   position: relative;
   flex: 0 0 clamp(260px, 30vw, 360px);
