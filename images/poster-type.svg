@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1700" width="1200" height="1700">
+  <defs><filter id="g"><feTurbulence baseFrequency="0.9" numOctaves="3" seed="31"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.07"/></feComponentTransfer></filter></defs>
+  <rect width="1200" height="1700" fill="#E9E2D0"/><rect width="1200" height="1700" filter="url(#g)" opacity="0.7"/>
+  <g stroke="#B8B09C" stroke-width="1" opacity="0.7">
+    <path d="M120 0 V1700 M300 0 V1700 M480 0 V1700 M660 0 V1700 M840 0 V1700 M1020 0 V1700"/>
+    <path d="M0 120 H1200 M0 300 H1200 M0 480 H1200 M0 660 H1200 M0 840 H1200 M0 1020 H1200 M0 1200 H1200 M0 1380 H1200 M0 1560 H1200"/>
+  </g>
+  <rect x="120" y="180" width="360" height="360" fill="#B96C50"/>
+  <rect x="660" y="180" width="360" height="360" fill="#7C8F74"/>
+  <rect x="120" y="660" width="360" height="360" fill="#2F3A2F"/>
+  <rect x="660" y="660" width="360" height="360" fill="#D8B467"/>
+  <g font-family="serif" fill="#F7F0E1" text-anchor="middle">
+    <text x="300" y="455" font-size="230">字</text>
+    <text x="840" y="455" font-size="230">形</text>
+    <text x="300" y="935" font-size="230">节</text>
+    <text x="840" y="935" font-size="230">奏</text>
+  </g>
+  <text x="120" y="1180" font-family="sans-serif" font-size="42" letter-spacing="12" fill="#2F3A2F">TYPE AS PAPER, GRID AS BREATH</text>
+  <g font-family="sans-serif" font-size="22" letter-spacing="5" fill="#6B634F">
+    <text x="120" y="1250">01 / (grid)  02 / (contrast)  03 / (rhythm)</text>
+    <text x="120" y="1300">CHINESE TYPOGRAPHY STUDY — 2024</text>
+  </g>
+  <path d="M120 1380 H1080" stroke="#2F3A2F" stroke-width="4"/>
+  <text x="120" y="1460" font-family="serif" font-size="120" fill="#B96C50">留白</text>
+  <text x="760" y="1450" font-family="sans-serif" font-size="24" letter-spacing="6" fill="#6B634F">NEGATIVE SPACE / 42%</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" width="1200" height="1400">
+  <defs><filter id="g"><feTurbulence baseFrequency="0.9" numOctaves="3" seed="15"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter></defs>
+  <rect width="1200" height="1400" fill="#F1E7D2"/><rect width="1200" height="1400" filter="url(#g)" opacity="0.6"/>
+  <path d="M420 280 C420 160 780 160 780 280" fill="none" stroke="#8A6426" stroke-width="34"/>
+  <path d="M300 280 H900 L960 1220 H240Z" fill="#C7A876"/>
+  <path d="M300 280 H900 L960 1220 H240Z" fill="none" stroke="#8A6426" stroke-width="5"/>
+  <path d="M300 280 H900" stroke="#8A6426" stroke-width="8"/>
+  <g transform="translate(600 700)">
+    <circle r="190" fill="#D8B467"/>
+    <path d="M-150 60 Q0 -110 150 60 Q0 180 -150 60Z" fill="#7C8F74"/>
+    <path d="M-150 60 Q0 -10 150 60" fill="none" stroke="#F6F0E2" stroke-width="10"/>
+    <text y="-30" font-family="serif" font-size="72" fill="#2F3A2F" text-anchor="middle">纸间</text>
+  </g>
+  <g font-family="sans-serif" fill="#4A5544" text-anchor="middle">
+    <text x="600" y="1010" font-size="34" letter-spacing="8">PAPER / OBJECT / MEMORY</text>
+    <text x="600" y="1070" font-size="22" letter-spacing="5" opacity="0.7">STUDIO EDITION · 2025</text>
+  </g>
+  <ellipse cx="600" cy="1260" rx="340" ry="48" fill="#6D634C" opacity="0.12"/>
+</svg>

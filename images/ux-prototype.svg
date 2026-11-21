@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#EEE7D7"/>
+  <g font-family="sans-serif" fill="#334035">
+    <text x="80" y="100" font-size="46" font-weight="700" letter-spacing="6">纸感阅读器 · 交互原型</text>
+    <text x="80" y="150" font-size="24" opacity="0.65" letter-spacing="3">INTERACTION PROTOTYPE / SCREEN FLOW</text>
+  </g>
+  <g transform="translate(120,220)">
+    <rect width="380" height="640" rx="34" fill="#2F3A2F"/>
+    <rect x="18" y="18" width="344" height="604" rx="24" fill="#F7F0E1"/>
+    <text x="52" y="92" font-family="serif" font-size="40" fill="#2F3A2F">书架</text>
+    <rect x="52" y="125" width="276" height="150" rx="10" fill="#D8B467"/>
+    <rect x="52" y="300" width="130" height="190" rx="10" fill="#9DAE8E"/>
+    <rect x="198" y="300" width="130" height="190" rx="10" fill="#B96C50"/>
+    <g fill="#6B634F" font-family="sans-serif" font-size="20"><text x="52" y="535">最近阅读</text><text x="52" y="575">3 本 · 继续探索</text></g>
+  </g>
+  <g transform="translate(610,220)">
+    <rect width="380" height="640" rx="34" fill="#2F3A2F"/>
+    <rect x="18" y="18" width="344" height="604" rx="24" fill="#F7F0E1"/>
+    <text x="52" y="92" font-family="serif" font-size="40" fill="#2F3A2F">细节</text>
+    <rect x="52" y="125" width="276" height="260" rx="10" fill="#CBD5C4"/>
+    <g fill="#6B634F" font-family="sans-serif" font-size="20">
+      <text x="52" y="435">纸艺立体书档案</text><text x="52" y="470">材质 / 工艺 / 年份</text>
+    </g>
+    <rect x="52" y="510" width="276" height="62" rx="31" fill="#B96C50"/>
+    <text x="190" y="550" font-family="sans-serif" font-size="24" fill="#FFF7E9" text-anchor="middle">查看大图</text>
+  </g>
+  <g transform="translate(1100,220)">
+    <rect width="380" height="640" rx="34" fill="#2F3A2F"/>
+    <rect x="18" y="18" width="344" height="604" rx="24" fill="#F7F0E1"/>
+    <text x="52" y="92" font-family="serif" font-size="40" fill="#2F3A2F">注解</text>
+    <g fill="#9DAE8E">
+      <rect x="52" y="130" width="276" height="70" rx="8"/><rect x="52" y="220" width="276" height="70" rx="8"/>
+      <rect x="52" y="310" width="276" height="70" rx="8"/><rect x="52" y="400" width="276" height="70" rx="8"/>
+    </g>
+    <g fill="#F7F0E1" font-family="sans-serif" font-size="20"><text x="72" y="174">01 · 封面</text><text x="72" y="264">02 · 纸张</text><text x="72" y="354">03 · 光影</text><text x="72" y="444">04 · 交互</text></g>
+  </g>
+  <g stroke="#6F7D67" stroke-width="4" fill="none"><path d="M510 530 H600 M1010 530 H1090"/></g>
+  <text x="800" y="930" font-family="sans-serif" font-size="22" letter-spacing="5" fill="#6B634F" text-anchor="middle">TAP → BROWSE → INSPECT → RETURN</text>
+</svg>

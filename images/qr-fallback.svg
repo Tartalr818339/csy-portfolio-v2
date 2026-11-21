@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#FFF9EC"/>
+  <g fill="#2F3A2F">
+    <path d="M40 40h100v100H40zm20 20v60h60V60zM260 40h100v100H260zm20 20v60h60V60zM40 260h100v100H40zm20 20v60h60v-60z"/>
+    <rect x="76" y="76" width="28" height="28"/><rect x="296" y="76" width="28" height="28"/><rect x="76" y="296" width="28" height="28"/>
+    <rect x="180" y="60" width="20" height="20"/><rect x="210" y="60" width="20" height="20"/><rect x="180" y="100" width="20" height="20"/>
+    <rect x="60" y="180" width="20" height="20"/><rect x="100" y="180" width="20" height="20"/><rect x="140" y="180" width="20" height="20"/>
+    <rect x="180" y="180" width="20" height="20"/><rect x="220" y="180" width="20" height="20"/><rect x="260" y="180" width="20" height="20"/>
+    <rect x="300" y="180" width="20" height="20"/><rect x="340" y="180" width="20" height="20"/><rect x="180" y="220" width="20" height="20"/>
+    <rect x="240" y="220" width="20" height="20"/><rect x="280" y="220" width="20" height="20"/><rect x="340" y="220" width="20" height="20"/>
+    <rect x="60" y="240" width="20" height="20"/><rect x="140" y="240" width="20" height="20"/><rect x="200" y="260" width="20" height="20"/>
+    <rect x="260" y="260" width="20" height="20"/><rect x="320" y="260" width="20" height="20"/><rect x="180" y="300" width="20" height="20"/>
+    <rect x="220" y="300" width="20" height="20"/><rect x="280" y="300" width="20" height="20"/><rect x="340" y="300" width="20" height="20"/>
+    <rect x="60" y="340" width="20" height="20"/><rect x="140" y="340" width="20" height="20"/><rect x="220" y="340" width="20" height="20"/>
+    <rect x="300" y="340" width="20" height="20"/>
+  </g>
+  <text x="200" y="390" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#6B634F">HELLO@EXAMPLE.COM</text>
+</svg>

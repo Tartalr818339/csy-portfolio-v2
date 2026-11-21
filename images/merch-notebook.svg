@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#E8DECA"/>
+  <g transform="translate(160 130)">
+    <rect width="880" height="640" rx="18" fill="#2F3A2F"/>
+    <rect x="28" y="28" width="824" height="584" rx="10" fill="#F3EBD8"/>
+    <rect x="28" y="28" width="42" height="584" fill="#D8B467"/>
+    <g transform="translate(500 320)">
+      <circle r="170" fill="#7C8F74" opacity="0.9"/>
+      <path d="M-120 40 Q0 -110 120 40 Q0 150 -120 40Z" fill="#B96C50" opacity="0.9"/>
+      <circle r="52" fill="#F3EBD8"/>
+    </g>
+    <g fill="#2F3A2F" font-family="serif">
+      <text x="110" y="230" font-size="96">纸间笔记</text>
+      <text x="112" y="320" font-size="34" font-family="sans-serif" letter-spacing="8">NOTES BETWEEN PAGES</text>
+    </g>
+    <g fill="#6B634F" font-family="sans-serif" font-size="22" letter-spacing="4">
+      <text x="112" y="520">A5 · 120 PAGES · 100GSM</text>
+      <text x="112" y="560">STUDIO EDITION / 2025</text>
+    </g>
+  </g>
+  <ellipse cx="600" cy="820" rx="380" ry="38" fill="#6D634C" opacity="0.14"/>
+</svg>

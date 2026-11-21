@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800" width="1400" height="1800">
+  <defs><filter id="g"><feTurbulence baseFrequency="0.8" numOctaves="3" seed="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer></filter></defs>
+  <rect width="1400" height="1800" fill="#F3EADA"/><rect width="1400" height="1800" filter="url(#g)" opacity="0.6"/>
+  <g stroke="#4C534A" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M120 1420 L120 620 L430 520 L430 1420" stroke-width="5"/>
+    <path d="M430 1420 L430 760 L760 620 L760 1420" stroke-width="5"/>
+    <path d="M760 1420 L760 560 L1250 470 L1250 1420" stroke-width="5"/>
+    <path d="M120 1420 L1280 1420" stroke-width="6"/>
+    <path d="M430 760 L760 620 M120 620 L430 520 M760 560 L1250 470" stroke-width="3"/>
+    <g stroke-width="3" opacity="0.8">
+      <path d="M170 690 L380 625 M170 760 L380 695 M170 830 L380 765 M170 900 L380 835 M170 970 L380 905 M170 1040 L380 975 M170 1110 L380 1045 M170 1180 L380 1115 M170 1250 L380 1185 M170 1320 L380 1255"/>
+      <path d="M480 820 L710 730 M480 890 L710 800 M480 960 L710 870 M480 1030 L710 940 M480 1100 L710 1010 M480 1170 L710 1080 M480 1240 L710 1150 M480 1310 L710 1220"/>
+      <path d="M810 650 L1200 585 M810 720 L1200 655 M810 790 L1200 725 M810 860 L1200 795 M810 930 L1200 865 M810 1000 L1200 935 M810 1070 L1200 1005 M810 1140 L1200 1075 M810 1210 L1200 1145 M810 1280 L1200 1215 M810 1350 L1200 1285"/>
+    </g>
+    <path d="M0 1420 L700 1510 L1400 1420" stroke-width="4"/>
+    <path d="M700 1510 L700 1800 M280 1450 L60 1800 M1130 1450 L1340 1800" stroke-width="3" opacity="0.6"/>
+  </g>
+  <g fill="#B8A37D" opacity="0.28">
+    <rect x="120" y="620" width="310" height="800"/><rect x="430" y="760" width="330" height="660"/><rect x="760" y="560" width="490" height="860"/>
+  </g>
+  <g fill="#C98668" opacity="0.22"><circle cx="1080" cy="320" r="130"/></g>
+  <g font-family="Georgia, serif" fill="#4A5544">
+    <text x="100" y="150" font-size="48" letter-spacing="8">OLD TOWN WALK</text>
+    <text x="100" y="205" font-size="26" letter-spacing="4" opacity="0.7">urban sketch · ink &amp; wash · A4</text>
+    <text x="1060" y="1700" font-size="28" letter-spacing="5">FIELD NOTES / 07</text>
+  </g>
+  <rect x="62" y="62" width="1276" height="1676" fill="none" stroke="#7D846F" stroke-width="2" opacity="0.5"/>
+</svg>

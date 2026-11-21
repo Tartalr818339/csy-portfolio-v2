@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" width="1400" height="1400">
+  <defs>
+    <filter id="g"><feTurbulence baseFrequency="0.8" numOctaves="3" seed="9"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer></filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F4EBD8"/><stop offset="1" stop-color="#E4D7BC"/></linearGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A9BA9C"/><stop offset="1" stop-color="#6E8468"/></linearGradient>
+    <linearGradient id="blush" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E2B7A3"/><stop offset="1" stop-color="#B8785E"/></linearGradient>
+  </defs>
+  <rect width="1400" height="1400" fill="url(#bg)"/><rect width="1400" height="1400" filter="url(#g)" opacity="0.6"/>
+  <ellipse cx="700" cy="1120" rx="420" ry="120" fill="#6D634C" opacity="0.14"/>
+  <g transform="translate(700 720)">
+    <path d="M0 -300 L270 -150 L0 0 L-270 -150Z" fill="url(#clay)"/>
+    <path d="M-270 -150 L0 0 L0 320 L-270 170Z" fill="#5E7358"/>
+    <path d="M270 -150 L0 0 L0 320 L270 170Z" fill="#809676"/>
+    <path d="M-120 -390 L80 -300 L-20 -190 L-220 -280Z" fill="url(#blush)"/>
+    <path d="M-220 -280 L-20 -190 L-20 -60 L-220 -150Z" fill="#A86B54"/>
+    <path d="M80 -300 L-20 -190 L-20 -60 L80 -170Z" fill="#C98D75"/>
+    <path d="M150 60 L260 10 L330 100 L220 150Z" fill="#D8B467"/>
+    <path d="M220 150 L330 100 L330 250 L220 300Z" fill="#B08B3D"/>
+    <path d="M150 60 L220 150 L220 300 L150 210Z" fill="#C8A552"/>
+  </g>
+  <g stroke="#4F5847" fill="none" opacity="0.5">
+    <path d="M180 1180 H1220 M700 1180 V1280"/>
+    <path d="M260 1120 L700 1280 L1140 1120" stroke-dasharray="8 12"/>
+  </g>
+  <g font-family="sans-serif" fill="#4A5544">
+    <text x="96" y="130" font-size="46" letter-spacing="8" font-family="Georgia,serif">CLAY STUDY 02</text>
+    <text x="96" y="184" font-size="24" letter-spacing="4" opacity="0.7">纸黏土 / 体块推演 / 数字建模参考</text>
+    <text x="96" y="1300" font-size="22" letter-spacing="5" opacity="0.7">FORM · WEIGHT · BALANCE</text>
+  </g>
+  <rect x="60" y="60" width="1280" height="1280" fill="none" stroke="#8A816B" stroke-width="2" opacity="0.45"/>
+</svg>

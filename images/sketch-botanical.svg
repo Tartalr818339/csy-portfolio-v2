@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800" width="1400" height="1800">
+  <defs>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" seed="21" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.1"/></feComponentTransfer></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+  </defs>
+  <rect width="1400" height="1800" fill="#F6F0E2"/>
+  <rect width="1400" height="1800" filter="url(#paper)" opacity="0.55"/>
+  <g fill="none" stroke="#4F5847" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M700 1600 C680 1300 720 1100 690 860 C670 690 700 520 760 360" stroke-width="7"/>
+    <path d="M690 1160 C580 1090 480 1010 410 900" stroke-width="5"/>
+    <path d="M695 980 C820 930 900 850 950 740" stroke-width="5"/>
+    <path d="M705 760 C610 710 545 640 500 540" stroke-width="4"/>
+    <path d="M735 520 C840 490 915 430 960 340" stroke-width="4"/>
+    <path d="M680 1330 C560 1290 470 1220 400 1120" stroke-width="4"/>
+    <path d="M685 1270 C800 1240 880 1180 930 1090" stroke-width="4"/>
+  </g>
+  <g fill="#9DAE8E" fill-opacity="0.5" stroke="#4F5847" stroke-width="4">
+    <path d="M410 900 C330 890 280 830 275 750 C350 755 405 810 410 900Z"/>
+    <path d="M420 895 C430 810 480 760 560 748 C550 825 500 880 420 895Z"/>
+    <path d="M950 740 C1010 690 1040 615 1020 535 C950 575 920 655 950 740Z"/>
+    <path d="M940 750 C870 735 820 680 810 600 C890 615 935 670 940 750Z"/>
+    <path d="M500 540 C435 500 415 430 435 360 C500 395 525 465 500 540Z"/>
+    <path d="M512 550 C575 520 620 460 620 385 C550 405 510 470 512 550Z"/>
+    <path d="M960 340 C1010 295 1025 230 1000 170 C945 210 925 275 960 340Z"/>
+    <path d="M950 350 C890 330 855 275 860 210 C920 230 955 285 950 350Z"/>
+    <path d="M400 1120 C335 1105 290 1050 285 980 C355 995 395 1050 400 1120Z"/>
+    <path d="M930 1090 C990 1055 1020 990 1005 920 C940 960 915 1020 930 1090Z"/>
+  </g>
+  <g fill="none" stroke="#B76A50" stroke-width="3" opacity="0.65">
+    <circle cx="690" cy="860" r="52"/><circle cx="690" cy="860" r="74" stroke-dasharray="10 14"/>
+    <path d="M690 786 L690 934 M616 860 L764 860"/>
+  </g>
+  <g font-family="Georgia, serif" fill="#4A5544">
+    <text x="110" y="170" font-size="48" letter-spacing="8">BOTANICAL STUDY 03</text>
+    <text x="110" y="225" font-size="26" letter-spacing="4" opacity="0.7">graphite · colored pencil · 300gsm paper</text>
+    <text x="1080" y="1680" font-size="28" letter-spacing="5" opacity="0.75">SUNLIT FERN</text>
+  </g>
+  <g filter="url(#soft)" opacity="0.14" fill="#6E7D63">
+    <ellipse cx="390" cy="930" rx="120" ry="50" transform="rotate(-25 390 930)"/>
+    <ellipse cx="960" cy="730" rx="120" ry="50" transform="rotate(25 960 730)"/>
+  </g>
+  <rect x="62" y="62" width="1276" height="1676" fill="none" stroke="#7D846F" stroke-width="2" opacity="0.5"/>
+</svg>

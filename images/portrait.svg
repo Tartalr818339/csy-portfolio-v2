@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <defs>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.12"/></feComponentTransfer></filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7EEDC"/><stop offset="1" stop-color="#EADFC7"/></linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect width="1200" height="1500" filter="url(#grain)" opacity="0.5"/>
+  <circle cx="825" cy="340" r="205" fill="#D9B76C" opacity="0.45"/>
+  <circle cx="825" cy="340" r="205" fill="none" stroke="#9A7434" stroke-width="3" opacity="0.35"/>
+  <path d="M0 1030 C260 940 410 990 600 1050 C800 1112 1000 1070 1200 990 L1200 1500 L0 1500Z" fill="#A9B79D" opacity="0.55"/>
+  <path d="M0 1140 C280 1060 470 1130 650 1175 C850 1225 1030 1180 1200 1120 L1200 1500 L0 1500Z" fill="#788B71" opacity="0.5"/>
+  <g transform="translate(0,40)">
+    <path d="M420 700 C420 520 510 430 610 430 C720 430 800 525 795 700 C790 860 720 930 610 930 C500 930 425 860 420 700Z" fill="#D8A88F"/>
+    <path d="M415 690 C405 545 495 445 608 445 C700 445 775 510 795 635 C730 590 665 575 610 575 C530 575 465 615 415 690Z" fill="#3F4A3C"/>
+    <path d="M470 690 C485 675 505 675 520 690" fill="none" stroke="#3F4A3C" stroke-width="8" stroke-linecap="round"/>
+    <path d="M690 690 C705 675 725 675 740 690" fill="none" stroke="#3F4A3C" stroke-width="8" stroke-linecap="round"/>
+    <path d="M565 790 Q610 815 655 790" fill="none" stroke="#9A5C4C" stroke-width="7" stroke-linecap="round"/>
+    <path d="M455 930 C455 930 390 1000 365 1120 L870 1120 C840 1000 770 930 770 930 C720 990 500 990 455 930Z" fill="#B76A50"/>
+    <path d="M590 930 L630 930 L650 1120 L570 1120Z" fill="#E9D9B8" opacity="0.85"/>
+  </g>
+  <g stroke="#5F6F58" stroke-width="5" fill="none" opacity="0.75">
+    <path d="M180 1180 C190 1050 230 960 300 885"/>
+    <path d="M245 1000 C190 970 160 920 150 870"/>
+    <path d="M255 970 C310 945 335 900 340 850"/>
+    <path d="M1010 1180 C1000 1060 970 970 910 900"/>
+    <path d="M950 1000 C1005 970 1035 925 1045 875"/>
+  </g>
+  <g fill="#7E916F" opacity="0.7">
+    <ellipse cx="150" cy="855" rx="26" ry="62" transform="rotate(-35 150 855)"/>
+    <ellipse cx="340" cy="835" rx="24" ry="58" transform="rotate(42 340 835)"/>
+    <ellipse cx="1045" cy="860" rx="25" ry="60" transform="rotate(38 1045 860)"/>
+  </g>
+  <text x="100" y="1360" font-family="Georgia, serif" font-size="42" letter-spacing="10" fill="#4A5544">LIN ZHIYAO</text>
+  <text x="100" y="1418" font-family="sans-serif" font-size="24" letter-spacing="6" fill="#7C6B52">VISUAL DESIGNER · PAPER LOVER</text>
+  <rect x="96" y="1300" width="220" height="4" fill="#B76A50"/>
+</svg>

@@ -1,0 +1,631 @@
+const IMG = './images/';
+const MODEL = './public/models/';
+
+export const siteMeta = {
+  name: '陈烁羽',
+  englishName: 'CHEN SHUOYU',
+  role: '视觉设计 / 插画 / 交互设计',
+  email: '1849855748@qq.com',
+  intro: '把想法折进纸里，再把纸摊开成一片可以走进去的风景。',
+};
+
+export const units = [
+  {
+    id: 'intro',
+    nav: '个人介绍',
+    chapter: '序章',
+    kicker: 'ABOUT · 01',
+    tag: '个人档案',
+    title: '在纸页之间，认识我',
+    lead: '你好，我是陈烁羽。喜欢在艺术与技术之间，用纸艺与三维构建可踏入的叙事空间。',
+    layout: 'intro',
+    skills: [
+      { name: '纸艺装置', level: 92, note: '概念到落地' },
+      { name: '插画与视觉叙事', level: 88, note: '手绘 / 数字' },
+      { name: '交互原型', level: 82, note: 'Three.js · 原生 JS' },
+      { name: '动态视觉', level: 76, note: '节奏 / 缓动' },
+    ],
+    model: `${MODEL}intro.gltf`,
+    camera: { radius: 6.2, theta: 0.42, phi: 1.12, target: [0, 1.02, 0] },
+    left: {
+      lead: '你好，我是陈烁羽。喜欢在艺术与技术之间，用纸艺与三维构建可踏入的叙事空间。',
+      paragraphs: [
+        '我的创作横跨手绘插画、视觉叙事与交互原型。不局限于平面画面，热衷于把创意转化为有纵深、可感知的沉浸式体验。',
+        '这本立体书作品集本身就是一次实践:将手绘、设计、交互项目收纳进一套翻书叙事语言,用3D纸艺的方式展示我的创作。',
+      ],
+      facts: [
+        { label: '专业方向', value: '艺术与科技' },
+        { label: '擅长能力', value: '纸艺装置 · 插画 · 交互原型 · 动态视觉' },
+        { label: '创作时间', value: '2024.09 — 至今' },
+        { label: '媒介 / 技术', value: 'Three.js · GLTF · 原生JavaScript' },
+        { label: '学习经历', value: '湖北美术学院 · 艺术与科技本科' },
+      ],
+    },
+    right: {
+      title: '',
+      intro: '',
+      sections: [
+        { title: '性格与节奏', body: '我是 ENFJ，外向但不喧闹，很喜欢观察和感受身边的事物，乐于和别人交流创意、一起头脑风暴。' },
+        { title: '兴趣与日常', body: '平时爱看展览、收集绘本和老纸张，空闲会画画、做纸艺装置，也会泡在电脑里调试交互、搭建三维场景。' },
+        { title: '工作方式', body: '享受把零散灵感梳理成完整叙事的过程，做事有耐心，愿意反复打磨细节。' },
+        { title: '想传递的事', body: '希望能用温暖有趣的作品传递想法，让观者能在互动里感受到故事感。' },
+      ],
+      note: '',
+    },
+    textures: [
+      {
+        node: 'hotspot_portrait',
+        src: `${IMG}profile.png`,
+        fitImage: true,
+        frame: 'Frame',
+        targetHeight: 1.52,
+      },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_portrait',
+        title: '个人图鉴',
+        image: `${IMG}profile.png`,
+        caption: '',
+        meta: [],
+        description: '',
+        minimal: true,
+      },
+    ],
+  },
+
+  {
+    id: 'works',
+    nav: '作品总览',
+    chapter: '序章',
+    kicker: 'INDEX · 02',
+    tag: '作品索引 / 滚动浏览',
+    title: '所有作品，一页翻完',
+    lead: '从手绘到交互，从实体模型到 IP 形象：这一面把全部作品收进一张可以滚动的索引。',
+    layout: 'index',
+    model: `${MODEL}intro.gltf`,
+    camera: { radius: 6.2, theta: 0.42, phi: 1.12, target: [0, 1.02, 0] },
+    left: {
+      lead: '从手绘到交互，从实体模型到 IP 形象：这一面把全部作品收进一张可以滚动的索引。',
+      paragraphs: [
+        '中间滚动区按展区顺序收录全部作品。向下滚动浏览，点击任意作品卡片，书页会直接翻到对应展区。',
+      ],
+      facts: [
+        { label: '浏览方式', value: '滚动 / 点击跳转' },
+        { label: '内容', value: '全部作品索引' },
+      ],
+    },
+    right: {
+      title: '浏览提示',
+      intro: '点击中间的作品卡片，可以直接翻到该作品所在展区。使用底部「上一项 / 下一项」也能逐页浏览。',
+      sections: [],
+      note: '',
+    },
+    textures: [],
+    hotspots: [],
+  },
+
+  {
+    id: 'illustration',
+    nav: '手绘作品',
+    chapter: '第一展区',
+    kicker: 'DRAWING · 03',
+    tag: '手绘 / 器物研究',
+    title: '神面纹卣 · 马克笔手绘',
+    lead: '以噩侯四器之西周神面纹卣为原型，用马克笔复刻青铜器上的神面与纹样。',
+    model: `${MODEL}illustration.gltf`,
+    camera: { radius: 6.8, theta: 0.34, phi: 1.08, target: [0, 1.25, 0] },
+    left: {
+      lead: '以噩侯四器之西周神面纹卣为原型，用马克笔复刻青铜器上的神面与纹样。',
+      paragraphs: [
+        '这件作品以噩侯四器之西周神面纹卣为原型，把青铜器正面的对称神面、兽面纹与提梁结构转译成一张马克笔手绘。',
+        '中央画稿可以直接点击放大；右侧同时提供完整画面与纹样细节，方便对照器物原型的层次关系。',
+      ],
+      facts: [
+        { label: '作品原型', value: '噩侯四器之西周神面纹卣' },
+        { label: '创作时间', value: '2024年11月' },
+        { label: '创作媒介', value: '马克笔' },
+      ],
+    },
+    right: {
+      intro: '中央展台呈现作品全貌，右侧两张图分别为完整画面与纹样细节。点击任意一处都能弹出大图与创作说明。',
+      sections: [
+        { title: '创作思路', body: '用马克笔的黑灰层次压出青铜浮雕的高光与凹槽，保留神面的对称结构，让器物的重量感通过明暗落在纸上。' },
+        { title: '灵感来源', body: '噩侯四器之西周神面纹卣的双目、角状装饰与层层排布的兽面纹，是这张手绘最主要的观察对象。' },
+      ],
+      note: '',
+    },
+    textures: [
+      {
+        node: 'hotspot_sketch',
+        src: `${IMG}illustration-you.jpg`,
+        fitImage: true,
+        frame: 'CanvasBack',
+        targetHeight: 1.4,
+      },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_sketch',
+        title: '西周神面纹卣 / Marker Drawing',
+        image: `${IMG}illustration-you.jpg`,
+        caption: '以噩侯四器之西周神面纹卣为原型的马克笔手绘。',
+        meta: ['工具：马克笔', '创作时间：2024年11月'],
+        description: '以器物正面神面为中心，用深浅马克笔逐层压出青铜浮雕的高光与凹槽。对称的兽面纹、角状装饰与提梁结构都被保留下来。',
+      },
+      {
+        node: 'hotspot_sketch_secondary',
+        title: '神面纹样细节 / Detail',
+        image: `${IMG}illustration-you-detail.jpg`,
+        caption: '面部纹样与浮雕层次的局部放大。',
+        meta: ['工具：马克笔', '来源：同一幅手绘局部'],
+        description: '局部重点表现双目、鼻梁与两侧兽面纹的明暗关系，通过叠色与留白区分凸起的纹饰和凹陷的底纹。',
+      },
+    ],
+  },
+
+  {
+    id: 'graphic',
+    nav: '视觉设计',
+    chapter: '第二展区',
+    kicker: 'GRAPHIC · 04',
+    tag: '信息可视化',
+    title: '《深海枯荣--冷水珊瑚信息可视化》',
+    lead: '以冷水珊瑚群落的演化与价值为主题，用 figma软件完成的信息可视化长图。',
+    model: `${MODEL}graphic.gltf`,
+    camera: { radius: 7.0, theta: -0.28, phi: 1.1, target: [0, 1.2, 0] },
+    left: {
+      lead: '以冷水珊瑚群落的演化与价值为主题，用 figma软件完成的信息可视化长图。',
+      paragraphs: [
+        '这组作品把冷水珊瑚的类型、结构、生命周期、生态功能与研究价值整理成两张纵向信息图谱。图表、插画与说明文字被纳入同一套蓝色系统，引导观众从宏观分布一路读到细小结构。',
+        '画面在信息密度与阅读节奏之间寻找平衡：标题先给出主题，图示负责解释关系，留白让视线有停顿。',
+      ],
+      facts: [
+        { label: '项目', value: '《深海枯荣--冷水珊瑚信息可视化》' },
+        { label: '创作时间', value: '2026.9.17-10.2' },
+        { label: '创作媒介', value: 'figma软件' },
+      ],
+    },
+    right: {
+      intro: '展板上并置两张信息图谱。点击任意一张，都可以查看完整画面与内容说明。',
+      sections: [
+        { title: '创作思路', body: '先整理冷水珊瑚的分类、演化与应用资料，再把文字转译成图示、色块与路径，让复杂信息按阅读顺序逐层展开。' },
+        { title: '灵感来源', body: '海洋生物图谱、科普展板的分层说明，以及冷水珊瑚在深水中呈现出的半透明质感。' },
+        { title: '注解', body: '两张图谱分别展示群落演化脉络与研究价值维度，共同构成一套可对照阅读的视觉系统。' },
+      ],
+      note: '',
+    },
+    textures: [
+      { node: 'hotspot_poster_a', src: `${IMG}deep-sea-visualization-1.png` },
+      { node: 'hotspot_poster_b', src: `${IMG}deep-sea-visualization-2.png` },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_poster_a',
+        title: '冷水珊瑚演化与价值图谱 01',
+        image: `${IMG}deep-sea-visualization-1.png`,
+        caption: '冷水珊瑚群落类型、结构与生态功能的信息梳理。',
+        meta: ['工具：figma软件', '创作时间：2026.9.17-10.2'],
+        description: '从全球分布、种类概览到群落结构与生态功能，用图示与短注释把冷水珊瑚的基础知识组织成一条清晰的阅读路径。',
+      },
+      {
+        node: 'hotspot_poster_b',
+        title: '冷水珊瑚演化与价值图谱 02',
+        image: `${IMG}deep-sea-visualization-2.png`,
+        caption: '生命周期、应用价值与种类介绍的信息可视化。',
+        meta: ['工具：figma软件', '创作时间：2026.9.17-10.2'],
+        description: '以环形图谱串联生命周期、群落食物与研究价值，再用局部图示展开种类细节，让科普信息在视觉上形成连续的探索感。',
+      },
+    ],
+  },
+
+  {
+    id: 'interactive',
+    nav: '交互设计',
+    chapter: '第三展区',
+    kicker: 'INTERACTION · 05',
+    tag: '交互设计 / 美食地图',
+    title: '武汉楚菜美食地图',
+    lead: '以武汉楚菜为主题，把城市美食分布、前期调研与视觉系统整理成一张信息展板。',
+    model: `${MODEL}interactive.gltf`,
+    camera: { radius: 7.2, theta: 0.5, phi: 1.08, target: [0, 1.18, 0] },
+    left: {
+      lead: '以武汉楚菜为主题，把城市美食分布、前期调研与视觉系统整理成一张信息展板。',
+      paragraphs: [
+        '作品以「楚味江城」为线索，从武汉三镇的城市肌理出发，标注代表性楚菜与老店位置，再把前期调研、人群分析、色彩解析和方案展示串成一条阅读路径。',
+        '中央屏幕展示完整展板，右侧另附局部细节。地图、图表与食物插画在同一张画面里分工：先定位，再解释，最后留下一点烟火气。',
+      ],
+      facts: [
+        { label: '项目', value: '武汉楚菜美食地图' },
+        { label: '创作时间', value: '2026.4' },
+        { label: '创作媒介', value: '信息可视化 · 展板设计' },
+      ],
+    },
+    right: {
+      intro: '中央屏幕展示完整展板，右侧提供局部细节。点击任意一处都可以查看大图与内容说明。',
+      sections: [
+        { title: '创作思路', body: '以城市地图为底图，用粉橙色系突出楚菜店铺与街区关系，再以分栏方式把调研、分析和设计推导排在画面下半部分。' },
+        { title: '用户研究', body: '前期围绕「游客如何快速找到有代表性的楚菜」展开调研，整理出区域选择、人群偏好与信息层级三个关键问题。' },
+        { title: '视觉系统', body: '地图标记、信息图表与美食插画共用一套圆角和线条语言，让理性数据与感性食欲在同一张展板中保持平衡。' },
+      ],
+      note: '',
+    },
+    textures: [
+      {
+        node: 'hotspot_screen',
+        src: `${IMG}wuhan-food-map.png`,
+        fitImage: true,
+        frame: 'ScreenFrame',
+        targetHeight: 1.38,
+      },
+      {
+        node: 'hotspot_flow',
+        src: `${IMG}wuhan-food-map-detail.png`,
+        fitImage: true,
+        targetHeight: 0.95,
+      },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_screen',
+        title: '武汉楚菜美食地图 / Exhibition Board',
+        image: `${IMG}wuhan-food-map.png`,
+        caption: '以楚味江城为主题的城市美食信息展板。',
+        meta: ['创作媒介：信息可视化 · 展板设计', '创作时间：2026.4'],
+        description: '上半部分以武汉地图为骨架，标注代表性楚菜与店铺；下半部分依次展开设计说明、前期调研、人群分析、色彩解析与方案展示。',
+      },
+      {
+        node: 'hotspot_flow',
+        title: '展板细节 / Detail',
+        image: `${IMG}wuhan-food-map-detail.png`,
+        caption: '地图中的楚菜店铺信息弹窗细节。',
+        meta: ['来源：地图交互细节', '创作时间：2026.4'],
+        description: '放大后可以看到餐厅名称、人均价格、环境描述、位置、招牌菜与荣誉信息如何围绕地图标记组织，让地点与内容在同一视图中相互印证。',
+      },
+    ],
+  },
+  {
+    id: 'resonance',
+    nav: '音画交互',
+    chapter: '第三展区',
+    kicker: 'INTERACTION · 06',
+    tag: '音画交互 / 生成图案',
+    title: '《心核共振》',
+    lead: '以音频频谱驱动生成图案，让不同帧频与节奏在屏幕上长出不同的花。',
+    model: `${MODEL}interactive.gltf`,
+    camera: { radius: 7.2, theta: 0.5, phi: 1.08, target: [0, 1.18, 0] },
+    left: {
+      lead: '以音频频谱驱动生成图案，让不同帧频与节奏在屏幕上长出不同的花。',
+      paragraphs: [
+        '《心核共振》是一件音画交互作品。音频被实时拆分为频率与节拍数据，再映射成粒子的扩散、聚拢与对称排列；帧频不同，画面会呈现不同层次的图案。',
+        '中央屏幕展示主视觉，右侧陈列展板与两张图案变体。点击任意一处，都能看到对应的大图与设计说明。',
+      ],
+      facts: [
+        { label: '项目', value: '《心核共振》' },
+        { label: '创作时间', value: '2026.5' },
+        { label: '创作媒介', value: '音画交互 · 生成视觉 · 展板设计' },
+      ],
+    },
+    right: {
+      intro: '中央屏幕显示主视觉图案，右侧陈列展板与两张不同帧频下的图案变体。',
+      sections: [
+        { title: '创作思路', body: '把音频的低频、中频、高频分别对应到图案的外扩、旋转与中心聚合，让观众在听的同时看到声音的结构。' },
+        { title: '交互逻辑', body: '帧频与节拍作为主要变量：节奏加快时粒子扩散范围扩大，中心图案随之重组；节奏放缓时纹理向内收束。' },
+        { title: '视觉语言', body: '以深色背景衬托粉紫色粒子的半透明层叠，对称与曼陀罗结构让生成图案既有秩序感，也保留随机生长的呼吸。' },
+      ],
+      note: '',
+    },
+    textures: [
+      {
+        node: 'hotspot_screen',
+        src: `${IMG}resonance-main.jpg`,
+        fitImage: true,
+        frame: 'ScreenFrame',
+        targetHeight: 1.38,
+      },
+      {
+        node: 'hotspot_flow',
+        src: `${IMG}resonance-board.jpg`,
+        fitImage: true,
+        targetHeight: 0.95,
+      },
+      {
+        node: 'BlockA',
+        src: `${IMG}resonance-variant-1.jpg`,
+        fitImage: true,
+        targetHeight: 0.65,
+      },
+      {
+        node: 'BlockB',
+        src: `${IMG}resonance-variant-2.jpg`,
+        fitImage: true,
+        targetHeight: 0.48,
+      },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_screen',
+        title: '心核共振 / 主视觉',
+        image: `${IMG}resonance-main.jpg`,
+        caption: '音乐帧频驱动下的中心对称生成图案。',
+        meta: ['创作时间：2026.5', '来源：主视觉展示'],
+        description: '画面中心由多层粉色粒子构成对称花形，外围被深蓝色的环状纹理包裹。低频推动外圈扩散，高频则在中心点亮细密的纹样。',
+      },
+      {
+        node: 'hotspot_flow',
+        title: '展板细节 / Board',
+        image: `${IMG}resonance-board.jpg`,
+        caption: '《心核共振》项目展板，包含设计理念、交互逻辑与展示效果。',
+        meta: ['创作时间：2026.5', '来源：项目展板'],
+        description: '展板把设计理念、实现方式、交互逻辑、灵感来源、展示效果与总结编排在同一画面中，形成从概念到结果的完整阅读路径。',
+      },
+      {
+        node: 'BlockA',
+        title: '图案变体 01',
+        image: `${IMG}resonance-variant-1.jpg`,
+        caption: '中频节奏下形成的花瓣状粒子结构。',
+        meta: ['创作时间：2026.5', '来源：图案变体'],
+        description: '当节奏处于中频区间，粒子向四周展开成花瓣状轮廓，中心保留清晰的对称核心，整体更接近绽放的状态。',
+      },
+      {
+        node: 'BlockB',
+        title: '图案变体 02',
+        image: `${IMG}resonance-variant-2.jpg`,
+        caption: '高频节拍下更加收束的内部纹样。',
+        meta: ['创作时间：2026.5', '来源：图案变体'],
+        description: '随着帧频提高，粒子运动更密集，中心纹样层层叠合，形成带有发光感的复杂结构，体现声音能量向视觉的转化。',
+      },
+    ],
+  },
+  {
+    id: 'modeling',
+    nav: '3D建模',
+    chapter: '第四展区',
+    kicker: '3D MODEL · 07',
+    tag: '环境设计 / 实体建模',
+    title: '公园凉亭设计',
+    lead: '以编织木构与自然地形为线索，完成一座可供休憩与观景的公园凉亭方案。',
+    model: `${MODEL}modeling.gltf`,
+    camera: { radius: 7.0, theta: 0.55, phi: 1.06, target: [0, 0.85, 0] },
+    left: {
+      lead: '以编织木构与自然地形为线索，完成一座可供休憩与观景的公园凉亭方案。',
+      paragraphs: [
+        '方案从树冠的形态出发，用弯曲木柱托起编织网状屋顶，让凉亭在草地上呈现出轻巧而舒展的轮廓。环形基座整合长椅与太阳能灯具，使结构、休憩与照明成为一体。',
+        '这一页同时呈现数字渲染与实体模型：前者说明空间意向，后者保留手作推演时的比例、材料与场地关系。',
+      ],
+      facts: [
+        { label: '项目', value: '公园凉亭设计' },
+        { label: '创作时间', value: '2025.12' },
+        { label: '创作媒介', value: '实体模型 · 数字渲染' },
+      ],
+    },
+    right: {
+      intro: '中央展示数字渲染图，侧边卡片放置实体模型照片。点击任意一处都能查看大图与设计说明。',
+      sections: [
+        { title: '创作思路', body: '以树冠作为形式原型，把屋顶做成可过滤光线的编织网格；木柱向下延伸并弯折成座椅，减少额外构件。' },
+        { title: '灵感来源', body: '公园里自然生长的枝干、树荫下聚集的人群，以及传统编织工艺中相互承托的张力关系。' },
+        { title: '结构语言', body: '柱、网、座三位一体：木质框架负责承重，编织面负责遮阳与界定空间，圆形基座把结构收束成一个完整的休憩场所。' },
+      ],
+      note: '',
+    },
+    textures: [
+      {
+        node: 'hotspot_sculpture',
+        src: `${IMG}pavilion-render.png`,
+        fitImage: true,
+        targetHeight: 1.0,
+      },
+      {
+        node: 'hotspot_model_card',
+        src: `${IMG}pavilion-model.jpg`,
+        fitImage: true,
+        targetHeight: 0.86,
+      },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_sculpture',
+        title: '公园凉亭设计 / 数字渲染',
+        image: `${IMG}pavilion-render.png`,
+        caption: '编织木构屋顶与环形休憩基座的公园凉亭方案。',
+        meta: ['创作媒介：实体模型 · 数字渲染', '创作时间：2025.12'],
+        description: '屋顶由交织的木条构成连续的曲面，四根弯曲木柱同时承担支撑与座椅功能。太阳能灯具与环形长椅被整合进基座，让凉亭在白天与夜晚都能使用。',
+      },
+      {
+        node: 'hotspot_model_card',
+        title: '实体模型 / Site Model',
+        image: `${IMG}pavilion-model.jpg`,
+        caption: '放置在场地模型中的公园凉亭实体小样。',
+        meta: ['创作媒介：实体模型 · 数字渲染', '创作时间：2025.12'],
+        description: '实体模型保留了树枝状结构、编织顶棚和周边绿化比例。通过微缩场地，可以直观看到凉亭在公园环境中的尺度与位置关系。',
+      },
+    ],
+  },
+  {
+    id: 'installation',
+    nav: '装置艺术',
+    chapter: '装置艺术',
+    kicker: 'INSTALLATION · 08',
+    tag: '装置艺术 / 展览现场',
+    title: '《文字过家家》',
+    lead: '把文字变成可以走进去的家居场景，在展览现场重新排演日常关系。',
+    model: `${MODEL}motion.gltf`,
+    camera: { radius: 7.0, theta: -0.42, phi: 1.12, target: [0, 0.85, 0] },
+    left: {
+      lead: '把文字变成可以走进去的家居场景，在展览现场重新排演日常关系。',
+      paragraphs: [
+        '《文字过家家》以「家」为舞台，把日常物件、文字形状与身体尺度重新组合：毛绒汉字铺在地上，斑点狗座椅、云朵坐垫和木质书架各自占据一角，组成一个可以坐、可以躺、可以合影的过家家现场。',
+        '中央展示展览宣传海报，右侧依次陈列现场细节。点击任意图片都能查看大图与作品说明。',
+      ],
+      facts: [
+        { label: '项目', value: '《文字过家家》' },
+        { label: '创作时间', value: '2025.6' },
+        { label: '创作媒介', value: '装置艺术 · 展览现场 · 综合材料' },
+      ],
+    },
+    right: {
+      intro: '中央为展览宣传海报，右侧细节图记录毛绒文字、家具装置与现场陈设。点击任意一处查看大图。',
+      sections: [
+        { title: '创作思路', body: '把「过家家」的扮演感放大到展览尺度：观众不再只是观看文字，而是走进由文字和家具搭起的房间，在坐卧与合影中完成一次生活化的角色游戏。' },
+        { title: '现场语言', body: '高饱和海报与低饱和现场形成对照；毛绒、木板、软垫等材料把尖锐的字形变得柔软，让文字像玩具一样被触摸和重新摆放。' },
+        { title: '注解', body: '海报与六张现场照片共同构成展览档案：从宣传视觉到空间落地，记录同一套「文字家居」概念在不同媒介中的转译。' },
+      ],
+      note: '点击海报或现场细节，查看完整画面与创作说明。',
+    },
+    textures: [
+      { node: 'hotspot_frame_a', src: `${IMG}installation-detail-1.jpg`, fitImage: true, targetHeight: 0.42 },
+      { node: 'hotspot_frame_b', src: `${IMG}installation-poster.png`, fitImage: true, targetHeight: 0.95 },
+      { node: 'hotspot_frame_c', src: `${IMG}installation-detail-2.jpg`, fitImage: true, targetHeight: 0.42 },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_frame_b',
+        title: '展览宣传海报 / Poster',
+        image: `${IMG}installation-poster.png`,
+        caption: '《文字过家家》展览宣传海报。',
+        meta: ['创作时间：2025.6', '类型：展览视觉 / 宣传海报'],
+        description: '海报以蓝绿棋盘格和大字「过家家」建立视觉基调，把灯罩、画框、座椅等家居符号压缩进平面场景，预告一个可以走进去的文字游戏现场。',
+      },
+      {
+        node: 'hotspot_frame_a',
+        title: '现场细节 01 / 毛绒文字',
+        image: `${IMG}installation-detail-1.jpg`,
+        caption: '铺在地面的毛绒汉字装置。',
+        meta: ['创作时间：2025.6', '材料：毛绒 / 综合材料'],
+        description: '柔软的汉字直接落在地面，观众可以走近、踩上或坐在旁边，让原本只读的文字变成身体可以感知的地形。',
+      },
+      {
+        node: 'hotspot_frame_c',
+        title: '现场细节 02 / 斑点狗座椅',
+        image: `${IMG}installation-detail-2.jpg`,
+        caption: '黑白斑点狗造型的座椅装置。',
+        meta: ['创作时间：2025.6', '类型：家具装置'],
+        description: '狗的轮廓被压平成一件可以坐的家具，红色绳结和手写展签保留手作痕迹，让「家居」带着一点玩具般的幽默。',
+      },
+      {
+        node: 'installation_detail_03',
+        title: '现场细节 03 / 云朵坐垫',
+        image: `${IMG}installation-detail-3.jpg`,
+        caption: '铺开在地面的白色云朵状软垫。',
+        meta: ['创作时间：2025.6', '类型：软体装置'],
+        description: '蓬松的白色坐垫像一朵落在展厅里的云，观众可以坐上去或躺下，让观看变成身体的休息。',
+      },
+      {
+        node: 'installation_detail_04',
+        title: '现场细节 04 / 椅子与果物',
+        image: `${IMG}installation-detail-4.jpg`,
+        caption: '薄荷绿椅子与小雕塑、果物道具。',
+        meta: ['创作时间：2025.6', '类型：家具与道具'],
+        description: '椅子、水果与小人偶被放在同一高度，日常尺度被轻微打乱，形成一种既熟悉又荒诞的过家家氛围。',
+      },
+      {
+        node: 'installation_detail_05',
+        title: '现场细节 05 / 木质书架',
+        image: `${IMG}installation-detail-5.jpg`,
+        caption: '浅木色书架与仙人掌人形装置。',
+        meta: ['创作时间：2025.6', '材料：木 / 综合材料'],
+        description: '书架被做成几何化的搭建结构，彩色书脊与仙人掌人形并置，把「阅读」转成一件可以摆弄的家居玩具。',
+      },
+      {
+        node: 'installation_detail_06',
+        title: '现场细节 06 / 篝火帐篷',
+        image: `${IMG}installation-detail-6.jpg`,
+        caption: '木杆帐篷、篝火与人物剪影装置。',
+        meta: ['创作时间：2025.6', '类型：场景装置'],
+        description: '帐篷、火堆与悬挂的人物把「家」延伸到户外露营场景，用最轻的材料搭出一个可以围坐讲故事的空间。',
+      },
+    ],
+  },
+  {
+    id: 'ip',
+    nav: 'IP设计',
+    chapter: '第六展区',
+    kicker: 'IP DESIGN · 09',
+    tag: 'IP形象 / 生肖狗',
+    title: '《灵犬贺岁》',
+    lead: '以生肖狗为原型，设计一位圆眼灰发、穿红棉袄的春节 IP 形象「灵跃」。',
+    model: `${MODEL}graphic.gltf`,
+    camera: { radius: 7.0, theta: -0.28, phi: 1.1, target: [0, 1.2, 0] },
+    left: {
+      lead: '以生肖狗为原型，设计一位圆眼灰发、穿红棉袄的春节 IP 形象「灵跃」。',
+      paragraphs: [
+        '《灵犬贺岁》围绕生肖狗展开：从狗的尾巴、耳朵与鼻子提取造型特征，再把它们转译成圆眼、灰发、穿红棉袄的小孩形象，让传统生肖以更亲近的方式出现。',
+        '展板完整呈现 IP 自我介绍、表情包、三视图、产品周边与海报设计。点击中央展板即可放大查看全部细节。',
+      ],
+      facts: [
+        { label: '项目', value: '《灵犬贺岁》' },
+        { label: 'IP 名称', value: '灵跃' },
+        { label: '创作时间', value: '2025.5' },
+        { label: '创作媒介', value: 'IP 形象设计 · 视觉延展' },
+      ],
+    },
+    right: {
+      intro: '中央展板展示完整 IP 设定，点击可放大查看自我介绍、表情包、三视图、产品周边与海报设计。',
+      sections: [
+        { title: '创作思路', body: '把生肖狗的外形特征提炼成角色的耳朵、尾巴与鼻头，再用春节红棉袄和云纹细节建立节日氛围，让形象既有生肖识别度，也有亲切的故事感。' },
+        { title: '视觉语言', body: '灰白毛色与正红服装形成柔和对比；圆眼、短肢与毛绒质感把「灵跃」塑造成一个爱笑、好奇、喜欢探险的小孩，而不是单纯的动物拟人。' },
+        { title: '延展应用', body: '从三视图出发，继续推导表情包、眼罩、T 恤、挂件与新年海报，让同一个角色在不同载体上保持一致的轮廓与表情。' },
+      ],
+      note: '点击中央展板，查看《灵犬贺岁》完整 IP 设定。',
+    },
+    textures: [
+      { node: 'hotspot_poster_a', src: `${IMG}lingquan-ip.jpg`, fitImage: true, targetHeight: 1.5 },
+    ],
+    hotspots: [
+      {
+        node: 'hotspot_poster_a',
+        title: '灵犬贺岁 / IP 设计展板',
+        image: `${IMG}lingquan-ip.jpg`,
+        caption: '《灵犬贺岁》生肖狗 IP 设计展板。',
+        meta: ['创作时间：2025.5', '类型：IP 形象设计'],
+        description: '展板包含 IP 自我介绍、设计说明、三视图、表情包、产品周边与海报设计。角色「灵跃」以生肖狗为原型，灰发圆眼搭配红色新年服饰，把传统生肖主题转译成可延展的角色系统。',
+      },
+    ],
+  },
+
+  {
+    id: 'contact',
+    nav: '联系方式',
+    chapter: '尾章',
+    kicker: 'CONTACT · 10',
+    tag: '联络卡片',
+    title: '留一封信，在下一页相见',
+    lead: '合作、约稿、求职或只是想聊聊纸和屏幕，都欢迎给我写信。',
+    model: `${MODEL}contact.gltf`,
+    camera: { radius: 6.4, theta: -0.38, phi: 1.16, target: [0, 0.35, 0] },
+    left: {
+      lead: '合作、约稿、求职或只是想聊聊纸和屏幕，都欢迎给我写信。',
+      paragraphs: [
+        '我目前正在寻找能够与实体体验、文化内容和数字叙事结合的项目机会。无论是品牌视觉、展览物料，还是交互原型，都愿意从一张纸开始聊起。',
+        '如果邮件里附上一张你喜欢的照片或一本旧书的名字，我会很开心。',
+      ],
+      facts: [
+        { label: '邮箱', value: '1849855748@qq.com' },
+        { label: '社交平台', value: '微信 / QQ / 小红书' },
+        { label: '合作方向', value: '品牌视觉 · 展览 · 交互装置' },
+        { label: '创作时间', value: '长期开放' },
+      ],
+    },
+    right: {
+      title: '',
+      intro: '',
+      sections: [],
+      note: '',
+    },
+    textures: [{ node: 'hotspot_qr', src: `${IMG}qr-contact.jpg` }],
+    hotspots: [
+      {
+        node: 'hotspot_qr',
+        title: '扫码联络 / QR',
+        image: `${IMG}qr-contact.jpg`,
+        caption: '微信二维码，扫码添加好友。',
+        meta: ['尺寸：579 × 547 px', '格式：JPG', '内容：微信个人二维码'],
+        description: '把数字入口做成一枚小小的纸片贴纸。扫描后可直接添加微信好友。',
+      },
+    ],
+  },
+];
+
+export function getUnit(id) {
+  return units.find((unit) => unit.id === id) || units[0];
+}

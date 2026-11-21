@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#F5EEDF"/>
+  <g font-family="sans-serif" fill="#334035">
+    <text x="80" y="100" font-size="46" font-weight="700" letter-spacing="6">服务设计流程图</text>
+    <text x="80" y="150" font-size="24" opacity="0.65" letter-spacing="3">SERVICE BLUEPRINT / CYCLE 02</text>
+  </g>
+  <g stroke="#6F7D67" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#6F7D67"/></marker></defs>
+    <path d="M240 440 H390"/><path d="M610 440 H760"/><path d="M980 440 H1130"/>
+    <path d="M1330 520 C1330 720 270 720 270 520"/>
+  </g>
+  <g font-family="sans-serif" text-anchor="middle">
+    <g><rect x="60" y="320" width="180" height="240" rx="8" fill="#D8B467"/><text x="150" y="420" font-size="34" fill="#2F3A2F">调研</text><text x="150" y="470" font-size="19" fill="#5A5140">RESEARCH</text></g>
+    <g><rect x="390" y="320" width="220" height="240" rx="8" fill="#9DAE8E"/><text x="500" y="420" font-size="34" fill="#2F3A2F">定义</text><text x="500" y="470" font-size="19" fill="#40503E">DEFINE</text></g>
+    <g><rect x="760" y="320" width="220" height="240" rx="8" fill="#B96C50"/><text x="870" y="420" font-size="34" fill="#FFF5E6">原型</text><text x="870" y="470" font-size="19" fill="#F2D9C8">PROTOTYPE</text></g>
+    <g><rect x="1130" y="320" width="220" height="240" rx="8" fill="#7C8F74"/><text x="1240" y="420" font-size="34" fill="#FFF9EC">验证</text><text x="1240" y="470" font-size="19" fill="#E4EBDD">TEST</text></g>
+  </g>
+  <g font-family="sans-serif" font-size="22" fill="#6B634F" text-anchor="middle">
+    <text x="150" y="620">访谈 / 观察</text><text x="500" y="620">用户画像</text><text x="870" y="620">低保真</text><text x="1240" y="620">可用性测试</text>
+    <text x="800" y="760" font-size="26">持续迭代 · 每两周复盘一次</text>
+  </g>
+  <g stroke="#B8B09C" stroke-width="2" stroke-dasharray="8 10"><rect x="40" y="260" width="1520" height="520" rx="16" fill="none"/></g>
+</svg>

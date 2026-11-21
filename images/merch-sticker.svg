@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <rect width="1200" height="1200" fill="#F6F0E2"/>
+  <g stroke="#CFC5AD" stroke-width="2" stroke-dasharray="8 10"><rect x="50" y="50" width="1100" height="1100" fill="none"/></g>
+  <g font-family="sans-serif" fill="#4A5544">
+    <text x="90" y="120" font-size="40" font-family="Georgia,serif" letter-spacing="8">STICKER SHEET</text>
+    <text x="90" y="170" font-size="20" letter-spacing="4" opacity="0.65">文创贴纸 / 纸艺符号延展</text>
+  </g>
+  <g transform="translate(260 420)">
+    <circle r="130" fill="#B96C50"/><circle r="100" fill="#F6F0E2"/>
+    <path d="M-50 20 Q0 -60 50 20 Q0 70 -50 20Z" fill="#7C8F74"/>
+  </g>
+  <g transform="translate(600 400) rotate(-8)">
+    <rect x="-135" y="-95" width="270" height="190" rx="28" fill="#D8B467"/>
+    <text y="20" font-family="serif" font-size="72" fill="#2F3A2F" text-anchor="middle">翻页</text>
+  </g>
+  <g transform="translate(940 440)">
+    <path d="M0 -120 L120 0 L0 120 L-120 0Z" fill="#7C8F74"/>
+    <path d="M0 -70 L70 0 L0 70 L-70 0Z" fill="#F6F0E2"/>
+    <circle r="18" fill="#B96C50"/>
+  </g>
+  <g transform="translate(330 800) rotate(6)">
+    <rect x="-150" y="-80" width="300" height="160" rx="18" fill="#9DAE8E"/>
+    <text y="14" font-family="sans-serif" font-size="34" fill="#F6F0E2" text-anchor="middle" letter-spacing="4">HELLO, PAPER</text>
+  </g>
+  <g transform="translate(760 820)">
+    <circle r="110" fill="#E2B7A3"/><circle r="82" fill="none" stroke="#8A6426" stroke-width="4" stroke-dasharray="8 10"/>
+    <text y="18" font-family="serif" font-size="66" fill="#6B3E32" text-anchor="middle">纸</text>
+  </g>
+  <text x="600" y="1120" font-family="sans-serif" font-size="20" text-anchor="middle" letter-spacing="6" fill="#6B634F">DIE-CUT / MATTE LAMINATION / 300G</text>
+</svg>
