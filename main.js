@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121i';
+import { siteMeta, units } from './data.js?v=20261121j';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -330,17 +330,63 @@ function bindNavigation() {
 
 function bindCursorGlow() {
   const glow = document.querySelector('#cursor-glow');
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const dot = document.querySelector('#cursor-dot');
+  const ring = document.querySelector('#cursor-ring');
+  if (!glow || !dot || !ring) return;
+
+  document.body.classList.add('has-custom-cursor');
+
+  const themes = {
+    pink: { color: '#ff2e93', glow: 'rgba(255, 46, 147, 0.26)' },
+    blue: { color: '#62e6ff', glow: 'rgba(98, 230, 255, 0.25)' },
+    dark: { color: '#4de8ce', glow: 'rgba(77, 232, 206, 0.30)' },
+    lime: { color: '#dcff57', glow: 'rgba(220, 255, 87, 0.28)' },
+  };
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let ringX = targetX;
+  let ringY = targetY;
+  let currentMode = '';
+
+  const initialTransform = `translate(${targetX}px, ${targetY}px) translate(-50%, -50%)`;
+  dot.style.transform = initialTransform;
+  glow.style.transform = initialTransform;
+
+  function setMode(mode) {
+    if (mode === currentMode) return;
+    currentMode = mode;
+    const theme = themes[mode];
+    document.documentElement.style.setProperty('--cursor-color', theme.color);
+    document.documentElement.style.setProperty('--cursor-glow', theme.glow);
+    glow.dataset.mode = mode;
+  }
+
   document.addEventListener('pointermove', (event) => {
-    glow.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
-    const under = document.elementFromPoint(event.clientX, event.clientY);
+    targetX = event.clientX;
+    targetY = event.clientY;
+    const cursorTransform = `translate(${targetX}px, ${targetY}px) translate(-50%, -50%)`;
+    dot.style.transform = cursorTransform;
+    glow.style.transform = cursorTransform;
+
+    const under = document.elementFromPoint(targetX, targetY);
     const section = under?.closest('.hero, .about, .works, .contact, .modal');
     let mode = 'pink';
     if (section?.classList.contains('works') || section?.classList.contains('modal')) mode = 'dark';
     else if (section?.classList.contains('about')) mode = 'blue';
     else if (section?.classList.contains('contact')) mode = 'lime';
-    glow.dataset.mode = mode;
+    setMode(mode);
+
+    ring.classList.toggle('is-hover', Boolean(under?.closest('a, button, .work-card, .gallery-figure')));
   });
+
+  function animateRing() {
+    ringX += (targetX - ringX) * 0.2;
+    ringY += (targetY - ringY) * 0.2;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
 }
 
 renderIntro();
