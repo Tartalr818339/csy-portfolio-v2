@@ -736,10 +736,13 @@ main,
 }
 
 .rail-actions {
+  position: relative;
+  z-index: 5;
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 18px;
+  pointer-events: auto;
 }
 
 .rail-actions button {
@@ -764,7 +767,7 @@ main,
   gap: 20px;
   overflow-x: auto;
   padding: 10px 4px 24px;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: none;
   scrollbar-width: none;
 }
 

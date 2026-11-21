@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121f';
+import { siteMeta, units } from './data.js?v=20261121g';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -20,6 +20,7 @@ const grid = document.querySelector('#work-grid');
 const filters = document.querySelector('#work-filters');
 const modal = document.querySelector('#project-modal');
 const toast = document.querySelector('#toast');
+let railPauseUntil = 0;
 
 function showToast(message) {
   toast.textContent = message;
@@ -81,13 +82,11 @@ function renderWorks(filter = '全部') {
     .map((unit) => {
       const image = unit.hotspots[0]?.image || '';
       return `
-        <button class="work-card reveal" type="button" data-work-id="${unit.id}">
+        <button class="work-card reveal" type="button" data-work-id="${unit.id}" title="${categoryOf(unit)}">
           <img src="${image}" alt="${unit.title}" loading="lazy" />
           <span class="work-arrow">↗</span>
           <span class="work-info">
-            <span class="work-tag">${categoryOf(unit)}</span>
             <h3>${unit.title}</h3>
-            <p>${unit.left.lead}</p>
           </span>
         </button>`;
     })
@@ -229,9 +228,9 @@ function initRailAutoScroll() {
   grid.addEventListener('scroll', updateFocus);
 
   function loop() {
-    if (!paused && modal.hidden && grid.scrollWidth > grid.clientWidth) {
+    if (!paused && Date.now() > railPauseUntil && modal.hidden && grid.scrollWidth > grid.clientWidth) {
       const max = grid.scrollWidth - grid.clientWidth;
-      let next = grid.scrollLeft + 1.2 * direction;
+      let next = grid.scrollLeft + 1.6 * direction;
       if (next >= max) {
         next = max;
         direction = -1;
@@ -257,9 +256,11 @@ function bindEvents() {
   });
 
   document.querySelector('#rail-prev')?.addEventListener('click', () => {
+    railPauseUntil = Date.now() + 1800;
     grid.scrollBy({ left: -grid.clientWidth * 0.7, behavior: 'smooth' });
   });
   document.querySelector('#rail-next')?.addEventListener('click', () => {
+    railPauseUntil = Date.now() + 1800;
     grid.scrollBy({ left: grid.clientWidth * 0.7, behavior: 'smooth' });
   });
 
