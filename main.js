@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121c';
+import { siteMeta, units } from './data.js?v=20261121d';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -33,26 +33,6 @@ function renderIntro() {
   document.querySelector('#about-lead').textContent = intro.left.lead;
   document.querySelector('#about-paragraphs').innerHTML = intro.left.paragraphs
     .map((paragraph) => `<p>${paragraph}</p>`)
-    .join('');
-
-  const stats = [
-    { value: workUnits.length, label: '件作品' },
-    { value: categories.length, label: '个类别' },
-    { value: '2026', label: '作品集版本' },
-  ];
-  document.querySelector('#about-stats').innerHTML = stats
-    .map((stat) => `<div class="stat"><strong>${stat.value}</strong><small>${stat.label}</small></div>`)
-    .join('');
-
-  document.querySelector('#about-skills').innerHTML = (intro.skills || [])
-    .map(
-      (skill) => `
-        <div class="skill" style="--level: ${skill.level}%">
-          <span class="skill-name">${skill.name}</span>
-          <span class="skill-track"><span class="skill-bar"></span></span>
-          <span class="skill-value">${skill.level}%</span>
-        </div>`
-    )
     .join('');
 }
 
@@ -107,15 +87,9 @@ function renderWorks(filter = '全部') {
 }
 
 function openProject(unit) {
-  const yearFact = unit.left.facts.find((fact) => fact.label.includes('时间'));
-  const projectFact = unit.left.facts.find((fact) => fact.label === '项目');
-  const year = yearFact?.value || '—';
-  const projectName = projectFact?.value || unit.title;
-
   const meta = [
-    { label: 'PROJECT', value: projectName },
-    { label: 'YEAR', value: year },
     { label: 'CATEGORY', value: categoryOf(unit) },
+    ...unit.left.facts.map((fact) => ({ label: fact.label, value: fact.value })),
     { label: 'INDEX', value: unit.kicker },
   ];
   document.querySelector('#modal-meta').innerHTML = meta
@@ -130,14 +104,10 @@ function openProject(unit) {
     .map((text) => `<p>${text}</p>`)
     .join('');
 
-  const facts = unit.left.facts
-    .map((fact) => `<dt>${fact.label}</dt><dd>${fact.value}</dd>`)
-    .join('');
-
   document.querySelector('#modal-kicker').textContent = `${categoryOf(unit)} · PROJECT DETAIL`;
   document.querySelector('#modal-title').textContent = unit.title;
   document.querySelector('#modal-lead').textContent = unit.left.lead;
-  document.querySelector('#modal-body').innerHTML = `${paragraphs}<dl class="detail-facts">${facts}</dl>`;
+  document.querySelector('#modal-body').innerHTML = paragraphs;
   document.querySelector('#modal-gallery').innerHTML = unit.hotspots
     .map(
       (hotspot) => `
@@ -228,6 +198,23 @@ function initScratch() {
   resize();
 }
 
+function initRailAutoScroll() {
+  let paused = false;
+  grid.addEventListener('pointerenter', () => { paused = true; });
+  grid.addEventListener('pointerleave', () => { paused = false; });
+
+  function loop() {
+    if (!paused && modal.hidden && grid.scrollWidth > grid.clientWidth) {
+      const max = grid.scrollWidth - grid.clientWidth;
+      let next = grid.scrollLeft + 0.45;
+      if (next >= max) next = 0;
+      grid.scrollLeft = next;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+}
+
 function bindEvents() {
   grid.addEventListener('click', (event) => {
     const card = event.target.closest('[data-work-id]');
@@ -300,6 +287,8 @@ function bindCursorGlow() {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   document.addEventListener('pointermove', (event) => {
     glow.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+    const under = document.elementFromPoint(event.clientX, event.clientY);
+    glow.dataset.mode = under?.closest('.works, .modal') ? 'dark' : 'light';
   });
 }
 
@@ -307,6 +296,7 @@ renderIntro();
 renderContact();
 renderFilters();
 renderWorks();
+initRailAutoScroll();
 bindEvents();
 bindNavigation();
 bindCursorGlow();

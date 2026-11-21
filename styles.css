@@ -63,6 +63,11 @@ textarea {
   background: radial-gradient(circle, rgba(255, 46, 147, 0.16), transparent 65%);
   transform: translate(-50%, -50%);
   pointer-events: none;
+  transition: background 300ms ease;
+}
+
+.cursor-glow[data-mode="dark"] {
+  background: radial-gradient(circle, rgba(98, 230, 255, 0.2), rgba(220, 255, 87, 0.06) 42%, transparent 70%);
 }
 
 .nav {
@@ -163,7 +168,7 @@ main,
   min-height: 100vh;
   padding: 0;
   background: var(--pink);
-  color: #fff;
+  color: var(--ink);
   overflow: hidden;
 }
 
@@ -216,11 +221,9 @@ main,
 .scratch-collage {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-  background: #161616;
-  transform: rotate(-2deg) scale(1.1);
+  display: block;
+  background: #fff;
+  transform: scale(1.04);
 }
 
 .scratch-collage img {
@@ -255,6 +258,7 @@ main,
 .scratch-words {
   display: grid;
   gap: 6px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .scratch-words span {
@@ -299,25 +303,22 @@ main,
   left: 50%;
   bottom: 58px;
   z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 62px;
-  height: 62px;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
   margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(23, 21, 15, 0.7);
   border-radius: 50%;
-  font-size: 11px;
-  line-height: 1.2;
-  text-align: center;
+  font-size: 22px;
+  line-height: 1;
   transform: translateX(-50%);
   transition: transform 240ms ease, background 240ms ease;
 }
 
 .hero-enter:hover {
   transform: translateX(-50%) translateY(4px);
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(23, 21, 15, 0.08);
 }
 
 .hero-bottom {
@@ -328,7 +329,7 @@ main,
   z-index: 5;
   margin: 0;
   padding: 6px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(23, 21, 15, 0.5);
   font-family: var(--serif);
   font-size: clamp(24px, 5vw, 72px);
   line-height: 1;
@@ -505,10 +506,22 @@ main,
 }
 
 .works {
+  position: relative;
   max-width: none;
-  padding: 100px 0 110px;
+  padding: 100px 0 150px;
   background: var(--dark);
   color: #fff;
+}
+
+.works::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+  pointer-events: none;
 }
 
 .works-inner {
