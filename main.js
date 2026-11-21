@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121e';
+import { siteMeta, units } from './data.js?v=20261121f';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -30,9 +30,19 @@ function showToast(message) {
 
 function renderIntro() {
   document.querySelector('#about-portrait').src = intro.hotspots[0].image;
-  document.querySelector('#about-lead').textContent = intro.left.lead;
   document.querySelector('#about-paragraphs').innerHTML = intro.left.paragraphs
     .map((paragraph) => `<p>${paragraph}</p>`)
+    .join('');
+
+  document.querySelector('#about-skills').innerHTML = (intro.skills || [])
+    .map(
+      (skill) => `
+        <div class="skill reveal" style="--level: ${skill.level}%">
+          <span class="skill-name">${skill.name}</span>
+          <span class="skill-track"><span class="skill-bar"></span></span>
+          <span class="skill-value">${skill.level}%</span>
+        </div>`
+    )
     .join('');
 }
 
@@ -66,23 +76,22 @@ function renderFilters() {
 
 function renderWorks(filter = '全部') {
   const list = workUnits.filter((unit) => filter === '全部' || categoryOf(unit) === filter);
-  const cardMarkup = (unit, clone = false) => {
-    const image = unit.hotspots[0]?.image || '';
-    return `
-      <button class="work-card ${clone ? '' : 'reveal'}" type="button" data-work-id="${unit.id}" ${clone ? 'aria-hidden="true" tabindex="-1"' : ''}>
-        <img src="${image}" alt="${unit.title}" loading="lazy" />
-        <span class="work-arrow">↗</span>
-        <span class="work-info">
-          <span class="work-tag">${categoryOf(unit)}</span>
-          <h3>${unit.title}</h3>
-          <p>${unit.left.lead}</p>
-        </span>
-      </button>`;
-  };
 
-  grid.innerHTML =
-    list.map((unit) => cardMarkup(unit)).join('') +
-    list.map((unit) => cardMarkup(unit, true)).join('');
+  grid.innerHTML = list
+    .map((unit) => {
+      const image = unit.hotspots[0]?.image || '';
+      return `
+        <button class="work-card reveal" type="button" data-work-id="${unit.id}">
+          <img src="${image}" alt="${unit.title}" loading="lazy" />
+          <span class="work-arrow">↗</span>
+          <span class="work-info">
+            <span class="work-tag">${categoryOf(unit)}</span>
+            <h3>${unit.title}</h3>
+            <p>${unit.left.lead}</p>
+          </span>
+        </button>`;
+    })
+    .join('');
 
   grid.scrollLeft = 0;
   observeReveals(grid);
@@ -202,6 +211,7 @@ function initScratch() {
 
 function initRailAutoScroll() {
   let paused = false;
+  let direction = 1;
   grid.addEventListener('pointerenter', () => { paused = true; });
   grid.addEventListener('pointerleave', () => { paused = false; });
 
@@ -220,9 +230,15 @@ function initRailAutoScroll() {
 
   function loop() {
     if (!paused && modal.hidden && grid.scrollWidth > grid.clientWidth) {
-      const half = grid.scrollWidth / 2;
-      let next = grid.scrollLeft + 1.1;
-      if (next >= half) next -= half;
+      const max = grid.scrollWidth - grid.clientWidth;
+      let next = grid.scrollLeft + 1.2 * direction;
+      if (next >= max) {
+        next = max;
+        direction = -1;
+      } else if (next <= 0) {
+        next = 0;
+        direction = 1;
+      }
       grid.scrollLeft = next;
       updateFocus();
     }
@@ -262,7 +278,14 @@ function bindEvents() {
   });
 
   const nav = document.querySelector('#nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('is-scrolled', window.scrollY > 20));
+  const progress = document.querySelector('#scroll-progress');
+  const updateScrollState = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 20);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+  };
+  window.addEventListener('scroll', updateScrollState);
+  updateScrollState();
 }
 
 function observeReveals(scope = document) {

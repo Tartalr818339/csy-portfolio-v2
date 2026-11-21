@@ -70,6 +70,18 @@ textarea {
   background: radial-gradient(circle, rgba(98, 230, 255, 0.2), rgba(220, 255, 87, 0.06) 42%, transparent 70%);
 }
 
+.scroll-progress {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 120;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pink), var(--blue), var(--lime));
+  box-shadow: 0 -2px 12px rgba(255, 46, 147, 0.35);
+  transition: width 120ms ease-out;
+}
+
 .nav {
   position: sticky;
   top: 0;
@@ -1154,12 +1166,15 @@ main,
 
 .reveal {
   opacity: 0;
+  filter: blur(9px);
   transform: translateY(24px);
-  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 700ms ease, filter 800ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
+  filter: blur(0);
   transform: none;
 }
 
