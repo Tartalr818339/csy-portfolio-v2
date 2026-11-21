@@ -301,7 +301,7 @@ main,
 .hero-enter {
   position: absolute;
   left: 50%;
-  bottom: 58px;
+  bottom: 128px;
   z-index: 5;
   display: grid;
   place-items: center;
@@ -340,13 +340,38 @@ main,
 }
 
 .marquee {
+  position: relative;
   overflow: hidden;
   padding: 13px 0;
   background: var(--ink);
   color: var(--lime);
 }
 
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee::before {
+  top: 0;
+  height: 42px;
+  background: linear-gradient(to bottom, var(--pink), transparent);
+}
+
+.marquee::after {
+  bottom: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+}
+
 .marquee-track {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: max-content;
   animation: marquee 22s linear infinite;
@@ -378,11 +403,122 @@ main,
   font-size: 14px;
 }
 
+.profile-head {
+  margin-bottom: 28px;
+}
+
+.profile-head h2 {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 10px 0 10px;
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+.profile-cn {
+  font-size: clamp(34px, 5vw, 56px);
+}
+
+.profile-cn em {
+  display: inline-block;
+  padding: 0 8px;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  font-style: normal;
+  transform: rotate(-3deg);
+}
+
+.profile-en {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.profile-lead {
+  max-width: 760px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
 .about-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 60px;
   align-items: start;
+}
+
+.profile-rules {
+  border-top: 1px solid rgba(23, 21, 15, 0.28);
+  padding: 8px 0;
+}
+
+.profile-rules:last-of-type {
+  border-bottom: 1px solid rgba(23, 21, 15, 0.28);
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 9px 0;
+}
+
+.profile-row + .profile-row {
+  border-top: 1px dashed rgba(23, 21, 15, 0.12);
+}
+
+.profile-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.profile-row strong {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.profile-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 14px;
+}
+
+.profile-tools span {
+  display: grid;
+  place-items: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 8px;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--pink);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.profile-tools span:nth-child(even) {
+  background: var(--blue);
+  color: var(--ink);
+}
+
+.profile-statement {
+  margin: 0;
+  padding: 14px 16px;
+  border-left: 3px solid var(--pink);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  line-height: 2;
+  color: var(--ink-soft);
 }
 
 .about-photo {
@@ -513,18 +649,31 @@ main,
   color: #fff;
 }
 
+.works::before,
 .works::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -1px;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, var(--cream));
+  z-index: 1;
   pointer-events: none;
 }
 
+.works::before {
+  top: -1px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--cream), transparent);
+}
+
+.works::after {
+  bottom: -1px;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+}
+
 .works-inner {
+  position: relative;
+  z-index: 2;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 70px);
@@ -576,8 +725,9 @@ main,
 
 .rail-actions {
   display: flex;
+  justify-content: center;
   gap: 8px;
-  flex: 0 0 auto;
+  margin-top: 18px;
 }
 
 .rail-actions button {
@@ -621,12 +771,16 @@ main,
   overflow: hidden;
   cursor: pointer;
   text-align: left;
-  scroll-snap-align: start;
-  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease;
+  scroll-snap-align: center;
+  transform: scale(var(--focus, 1));
+  opacity: var(--focus-opacity, 1);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease,
+    opacity 320ms ease;
 }
 
 .work-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.02);
+  opacity: 1;
   border-color: var(--pink);
 }
 

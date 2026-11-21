@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121d';
+import { siteMeta, units } from './data.js?v=20261121e';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -66,23 +66,25 @@ function renderFilters() {
 
 function renderWorks(filter = '全部') {
   const list = workUnits.filter((unit) => filter === '全部' || categoryOf(unit) === filter);
+  const cardMarkup = (unit, clone = false) => {
+    const image = unit.hotspots[0]?.image || '';
+    return `
+      <button class="work-card ${clone ? '' : 'reveal'}" type="button" data-work-id="${unit.id}" ${clone ? 'aria-hidden="true" tabindex="-1"' : ''}>
+        <img src="${image}" alt="${unit.title}" loading="lazy" />
+        <span class="work-arrow">↗</span>
+        <span class="work-info">
+          <span class="work-tag">${categoryOf(unit)}</span>
+          <h3>${unit.title}</h3>
+          <p>${unit.left.lead}</p>
+        </span>
+      </button>`;
+  };
 
-  grid.innerHTML = list
-    .map((unit) => {
-      const image = unit.hotspots[0]?.image || '';
-      return `
-        <button class="work-card reveal" type="button" data-work-id="${unit.id}">
-          <img src="${image}" alt="${unit.title}" loading="lazy" />
-          <span class="work-arrow">↗</span>
-          <span class="work-info">
-            <span class="work-tag">${categoryOf(unit)}</span>
-            <h3>${unit.title}</h3>
-            <p>${unit.left.lead}</p>
-          </span>
-        </button>`;
-    })
-    .join('');
+  grid.innerHTML =
+    list.map((unit) => cardMarkup(unit)).join('') +
+    list.map((unit) => cardMarkup(unit, true)).join('');
 
+  grid.scrollLeft = 0;
   observeReveals(grid);
 }
 
@@ -203,16 +205,31 @@ function initRailAutoScroll() {
   grid.addEventListener('pointerenter', () => { paused = true; });
   grid.addEventListener('pointerleave', () => { paused = false; });
 
+  function updateFocus() {
+    const center = grid.scrollLeft + grid.clientWidth / 2;
+    grid.querySelectorAll('.work-card').forEach((card) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(cardCenter - center);
+      const focus = Math.max(0.86, 1 - Math.min(distance / (grid.clientWidth * 0.7), 1) * 0.14);
+      card.style.setProperty('--focus', focus.toFixed(3));
+      card.style.setProperty('--focus-opacity', (0.55 + focus * 0.45).toFixed(2));
+    });
+  }
+
+  grid.addEventListener('scroll', updateFocus);
+
   function loop() {
     if (!paused && modal.hidden && grid.scrollWidth > grid.clientWidth) {
-      const max = grid.scrollWidth - grid.clientWidth;
-      let next = grid.scrollLeft + 0.45;
-      if (next >= max) next = 0;
+      const half = grid.scrollWidth / 2;
+      let next = grid.scrollLeft + 1.1;
+      if (next >= half) next -= half;
       grid.scrollLeft = next;
+      updateFocus();
     }
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
+  updateFocus();
 }
 
 function bindEvents() {

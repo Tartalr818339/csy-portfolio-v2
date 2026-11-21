@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="陈烁羽的个人作品集 · 交互 / 信息可视化 / 数字叙事。" />
     <title>陈烁羽 · 个人作品集</title>
-    <link rel="stylesheet" href="./styles.css?v=20261121d" />
+    <link rel="stylesheet" href="./styles.css?v=20261121e" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -60,19 +60,33 @@
       </div>
 
       <section class="section about" id="about">
-        <div class="section-head reveal">
+        <div class="profile-head reveal">
           <span class="section-no">01 / ABOUT</span>
-          <h2>关于我</h2>
-          <p>艺术表达 × 技术逻辑</p>
+          <h2>
+            <span class="profile-cn">个人<em>简介</em></span>
+            <span class="profile-en">Personal Profile</span>
+          </h2>
+          <p id="about-lead" class="profile-lead"></p>
         </div>
         <div class="about-grid">
+          <div class="about-content reveal">
+            <div class="profile-rules">
+              <div class="profile-row"><span class="profile-label">姓名 Name</span><strong>陈烁羽</strong></div>
+              <div class="profile-row"><span class="profile-label">教育 Education</span><strong>湖北美术学院</strong></div>
+              <div class="profile-row"><span class="profile-label">专业 Major</span><strong>艺术与科技</strong></div>
+              <div class="profile-row"><span class="profile-label">方向 Focus</span><strong>交互 / 信息可视化 / 数字叙事</strong></div>
+            </div>
+            <div class="profile-rules">
+              <div class="profile-row"><span class="profile-label">工具 Tools</span><strong>TouchDesigner · UE · Figma · PS · SketchUp</strong></div>
+            </div>
+            <div class="profile-tools" aria-label="常用工具">
+              <span>TD</span><span>UE</span><span>F</span><span>PS</span><span>SU</span>
+            </div>
+            <p id="about-paragraphs" class="profile-statement"></p>
+          </div>
           <div class="about-photo reveal">
             <img id="about-portrait" src="" alt="个人图鉴" />
             <span class="photo-tag">CHEN SHUOYU · 2026</span>
-          </div>
-          <div class="about-content reveal">
-            <p id="about-lead" class="about-lead"></p>
-            <div id="about-paragraphs" class="about-paragraphs"></div>
           </div>
         </div>
       </section>
@@ -85,12 +99,12 @@
           </div>
           <div class="works-controls">
             <div class="filters" id="work-filters" role="tablist" aria-label="作品分类"></div>
-            <div class="rail-actions">
-              <button id="rail-prev" type="button" aria-label="上一组作品">←</button>
-              <button id="rail-next" type="button" aria-label="下一组作品">→</button>
-            </div>
           </div>
           <div class="work-rail" id="work-grid"></div>
+          <div class="rail-actions">
+            <button id="rail-prev" type="button" aria-label="上一组作品">←</button>
+            <button id="rail-next" type="button" aria-label="下一组作品">→</button>
+          </div>
         </div>
       </section>
 
@@ -139,6 +153,6 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./main.js?v=20261121d"></script>
+    <script type="module" src="./main.js?v=20261121e"></script>
   </body>
 </html>
