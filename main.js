@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121b';
+import { siteMeta, units } from './data.js?v=20261121c';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');

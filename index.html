@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="陈烁羽的个人作品集 · 交互 / 信息可视化 / 数字叙事。" />
     <title>陈烁羽 · 个人作品集</title>
-    <link rel="stylesheet" href="./styles.css?v=20261121b" />
+    <link rel="stylesheet" href="./styles.css?v=20261121c" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -24,31 +24,31 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-meta">
-          <span>CHEN SHUOYU · 2026</span>
-          <span>INTERACTION / VISUAL DESIGN</span>
-          <span>SCROLL TO EXPLORE ↓</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="hero-im">I'm</span>
-          <span class="hero-name">CHEN SHUOYU</span>
-        </h1>
-
         <div class="scratch-wrap" id="scratch-wrap">
           <div class="scratch-collage" aria-hidden="true">
-            <img src="./images/installation-poster.png" alt="" />
-            <img src="./images/wuhan-food-map.png" alt="" />
+            <img src="./images/installation-poster.jpg" alt="" />
+            <img src="./images/wuhan-food-map.jpg" alt="" />
             <img src="./images/lingquan-ip.jpg" alt="" />
             <img src="./images/resonance-main.jpg" alt="" />
           </div>
-          <canvas id="scratch-canvas" aria-label="拖动刮开封面"></canvas>
+          <canvas id="scratch-canvas" aria-label="拖动刮开整个封面"></canvas>
           <div class="scratch-copy">
-            <span>A Designer</span>
-            <strong>Welcome to my personal website</strong>
+            <div class="hero-meta">
+              <span>CHEN SHUOYU · 2026</span>
+              <span>INTERACTION / VISUAL DESIGN</span>
+              <span>SCROLL TO EXPLORE ↓</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="hero-im">I'm</span>
+              <span class="hero-name">CHEN SHUOYU</span>
+            </h1>
+            <div class="scratch-words">
+              <span>A Designer</span>
+              <strong>Welcome to my personal website</strong>
+            </div>
           </div>
           <button id="scratch-reset" class="scratch-reset" type="button">重新刮开 ↺</button>
-          <span class="scratch-hint">按住拖动，像刮刮乐一样看看里面</span>
+          <span class="scratch-hint">按住拖动，整面都可以刮开</span>
         </div>
 
         <a class="hero-enter" href="#about">进入网站 <span>↓</span></a>
@@ -145,6 +145,6 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./main.js?v=20261121b"></script>
+    <script type="module" src="./main.js?v=20261121c"></script>
   </body>
 </html>

@@ -55,7 +55,7 @@ export const units = [
     textures: [
       {
         node: 'hotspot_portrait',
-        src: `${IMG}profile.png`,
+        src: `${IMG}profile.jpg`,
         fitImage: true,
         frame: 'Frame',
         targetHeight: 1.52,
@@ -65,7 +65,7 @@ export const units = [
       {
         node: 'hotspot_portrait',
         title: '个人图鉴',
-        image: `${IMG}profile.png`,
+        image: `${IMG}profile.jpg`,
         caption: '',
         meta: [],
         description: '',
@@ -196,14 +196,14 @@ export const units = [
       note: '',
     },
     textures: [
-      { node: 'hotspot_poster_a', src: `${IMG}deep-sea-visualization-1.png` },
-      { node: 'hotspot_poster_b', src: `${IMG}deep-sea-visualization-2.png` },
+      { node: 'hotspot_poster_a', src: `${IMG}deep-sea-visualization-1.jpg` },
+      { node: 'hotspot_poster_b', src: `${IMG}deep-sea-visualization-2.jpg` },
     ],
     hotspots: [
       {
         node: 'hotspot_poster_a',
         title: '冷水珊瑚演化与价值图谱 01',
-        image: `${IMG}deep-sea-visualization-1.png`,
+        image: `${IMG}deep-sea-visualization-1.jpg`,
         caption: '冷水珊瑚群落类型、结构与生态功能的信息梳理。',
         meta: ['工具：figma软件', '创作时间：2026.9.17-10.2'],
         description: '从全球分布、种类概览到群落结构与生态功能，用图示与短注释把冷水珊瑚的基础知识组织成一条清晰的阅读路径。',
@@ -211,7 +211,7 @@ export const units = [
       {
         node: 'hotspot_poster_b',
         title: '冷水珊瑚演化与价值图谱 02',
-        image: `${IMG}deep-sea-visualization-2.png`,
+        image: `${IMG}deep-sea-visualization-2.jpg`,
         caption: '生命周期、应用价值与种类介绍的信息可视化。',
         meta: ['工具：figma软件', '创作时间：2026.9.17-10.2'],
         description: '以环形图谱串联生命周期、群落食物与研究价值，再用局部图示展开种类细节，让科普信息在视觉上形成连续的探索感。',
@@ -253,14 +253,14 @@ export const units = [
     textures: [
       {
         node: 'hotspot_screen',
-        src: `${IMG}wuhan-food-map.png`,
+        src: `${IMG}wuhan-food-map.jpg`,
         fitImage: true,
         frame: 'ScreenFrame',
         targetHeight: 1.38,
       },
       {
         node: 'hotspot_flow',
-        src: `${IMG}wuhan-food-map-detail.png`,
+        src: `${IMG}wuhan-food-map-detail.jpg`,
         fitImage: true,
         targetHeight: 0.95,
       },
@@ -269,7 +269,7 @@ export const units = [
       {
         node: 'hotspot_screen',
         title: '武汉楚菜美食地图 / Exhibition Board',
-        image: `${IMG}wuhan-food-map.png`,
+        image: `${IMG}wuhan-food-map.jpg`,
         caption: '以楚味江城为主题的城市美食信息展板。',
         meta: ['创作媒介：信息可视化 · 展板设计', '创作时间：2026.4'],
         description: '上半部分以武汉地图为骨架，标注代表性楚菜与店铺；下半部分依次展开设计说明、前期调研、人群分析、色彩解析与方案展示。',
@@ -277,7 +277,7 @@ export const units = [
       {
         node: 'hotspot_flow',
         title: '展板细节 / Detail',
-        image: `${IMG}wuhan-food-map-detail.png`,
+        image: `${IMG}wuhan-food-map-detail.jpg`,
         caption: '地图中的楚菜店铺信息弹窗细节。',
         meta: ['来源：地图交互细节', '创作时间：2026.4'],
         description: '放大后可以看到餐厅名称、人均价格、环境描述、位置、招牌菜与荣誉信息如何围绕地图标记组织，让地点与内容在同一视图中相互印证。',
@@ -411,7 +411,7 @@ export const units = [
     textures: [
       {
         node: 'hotspot_sculpture',
-        src: `${IMG}pavilion-render.png`,
+        src: `${IMG}pavilion-render.jpg`,
         fitImage: true,
         targetHeight: 1.0,
       },
@@ -426,7 +426,7 @@ export const units = [
       {
         node: 'hotspot_sculpture',
         title: '公园凉亭设计 / 数字渲染',
-        image: `${IMG}pavilion-render.png`,
+        image: `${IMG}pavilion-render.jpg`,
         caption: '编织木构屋顶与环形休憩基座的公园凉亭方案。',
         meta: ['创作媒介：实体模型 · 数字渲染', '创作时间：2025.12'],
         description: '屋顶由交织的木条构成连续的曲面，四根弯曲木柱同时承担支撑与座椅功能。太阳能灯具与环形长椅被整合进基座，让凉亭在白天与夜晚都能使用。',
@@ -474,14 +474,14 @@ export const units = [
     },
     textures: [
       { node: 'hotspot_frame_a', src: `${IMG}installation-detail-1.jpg`, fitImage: true, targetHeight: 0.42 },
-      { node: 'hotspot_frame_b', src: `${IMG}installation-poster.png`, fitImage: true, targetHeight: 0.95 },
+      { node: 'hotspot_frame_b', src: `${IMG}installation-poster.jpg`, fitImage: true, targetHeight: 0.95 },
       { node: 'hotspot_frame_c', src: `${IMG}installation-detail-2.jpg`, fitImage: true, targetHeight: 0.42 },
     ],
     hotspots: [
       {
         node: 'hotspot_frame_b',
         title: '展览宣传海报 / Poster',
-        image: `${IMG}installation-poster.png`,
+        image: `${IMG}installation-poster.jpg`,
         caption: '《文字过家家》展览宣传海报。',
         meta: ['创作时间：2025.6', '类型：展览视觉 / 宣传海报'],
         description: '海报以蓝绿棋盘格和大字「过家家」建立视觉基调，把灯罩、画框、座椅等家居符号压缩进平面场景，预告一个可以走进去的文字游戏现场。',
