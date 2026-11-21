@@ -1,12 +1,20 @@
-import { siteMeta, units } from './data.js?v=20261121a';
+import { siteMeta, units } from './data.js?v=20261121b';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
 const workUnits = units.filter((unit) => !['intro', 'works', 'contact'].includes(unit.id));
 
-const chapterAliases = { '装置艺术': '第五展区' };
-const displayChapter = (chapter) => chapterAliases[chapter] || chapter;
-const chapters = [...new Set(workUnits.map((unit) => displayChapter(unit.chapter)))];
+const categoryMap = {
+  illustration: '手绘作品',
+  graphic: '展板设计',
+  interactive: '展板设计',
+  resonance: '交互设计',
+  modeling: '空间设计',
+  installation: '装置艺术',
+  ip: 'IP设计',
+};
+const categoryOf = (unit) => categoryMap[unit.id] || '其他作品';
+const categories = [...new Set(workUnits.map(categoryOf))];
 
 const grid = document.querySelector('#work-grid');
 const filters = document.querySelector('#work-filters');
@@ -21,7 +29,6 @@ function showToast(message) {
 }
 
 function renderIntro() {
-  document.querySelector('#hero-portrait').src = intro.hotspots[0].image;
   document.querySelector('#about-portrait').src = intro.hotspots[0].image;
   document.querySelector('#about-lead').textContent = intro.left.lead;
   document.querySelector('#about-paragraphs').innerHTML = intro.left.paragraphs
@@ -30,15 +37,14 @@ function renderIntro() {
 
   const stats = [
     { value: workUnits.length, label: '件作品' },
-    { value: chapters.length, label: '个展区' },
+    { value: categories.length, label: '个类别' },
     { value: '2026', label: '作品集版本' },
   ];
   document.querySelector('#about-stats').innerHTML = stats
     .map((stat) => `<div class="stat"><strong>${stat.value}</strong><small>${stat.label}</small></div>`)
     .join('');
 
-  const skills = intro.skills || [];
-  document.querySelector('#about-skills').innerHTML = skills
+  document.querySelector('#about-skills').innerHTML = (intro.skills || [])
     .map(
       (skill) => `
         <div class="skill" style="--level: ${skill.level}%">
@@ -60,7 +66,7 @@ function renderContact() {
 }
 
 function renderFilters() {
-  const options = ['全部', ...chapters];
+  const options = ['全部', ...categories];
   filters.innerHTML = options
     .map(
       (option, index) => `
@@ -79,20 +85,17 @@ function renderFilters() {
 }
 
 function renderWorks(filter = '全部') {
-  const list = workUnits.filter(
-    (unit) => filter === '全部' || displayChapter(unit.chapter) === filter
-  );
+  const list = workUnits.filter((unit) => filter === '全部' || categoryOf(unit) === filter);
 
   grid.innerHTML = list
     .map((unit) => {
-      const chapter = displayChapter(unit.chapter);
       const image = unit.hotspots[0]?.image || '';
       return `
-        <button class="work-card" type="button" data-work-id="${unit.id}">
+        <button class="work-card reveal" type="button" data-work-id="${unit.id}">
           <img src="${image}" alt="${unit.title}" loading="lazy" />
           <span class="work-arrow">↗</span>
           <span class="work-info">
-            <span class="work-tag">${chapter} · ${unit.kicker.split(' · ')[0]}</span>
+            <span class="work-tag">${categoryOf(unit)}</span>
             <h3>${unit.title}</h3>
             <p>${unit.left.lead}</p>
           </span>
@@ -100,21 +103,23 @@ function renderWorks(filter = '全部') {
     })
     .join('');
 
-  grid.querySelectorAll('.work-card').forEach((card) => {
-    card.classList.add('reveal');
-  });
   observeReveals(grid);
 }
 
 function openProject(unit) {
-  const chapter = displayChapter(unit.chapter);
-  const gallery = unit.hotspots
-    .map(
-      (hotspot) => `
-        <a href="${hotspot.image}" target="_blank" rel="noopener">
-          <img src="${hotspot.image}" alt="${hotspot.title}" loading="lazy" />
-        </a>`
-    )
+  const yearFact = unit.left.facts.find((fact) => fact.label.includes('时间'));
+  const projectFact = unit.left.facts.find((fact) => fact.label === '项目');
+  const year = yearFact?.value || '—';
+  const projectName = projectFact?.value || unit.title;
+
+  const meta = [
+    { label: 'PROJECT', value: projectName },
+    { label: 'YEAR', value: year },
+    { label: 'CATEGORY', value: categoryOf(unit) },
+    { label: 'INDEX', value: unit.kicker },
+  ];
+  document.querySelector('#modal-meta').innerHTML = meta
+    .map((item) => `<div><span>${item.label}</span><strong>${item.value}</strong></div>`)
     .join('');
 
   const paragraphs = [
@@ -129,11 +134,20 @@ function openProject(unit) {
     .map((fact) => `<dt>${fact.label}</dt><dd>${fact.value}</dd>`)
     .join('');
 
-  document.querySelector('#modal-kicker').textContent = `${chapter} · ${unit.kicker}`;
+  document.querySelector('#modal-kicker').textContent = `${categoryOf(unit)} · PROJECT DETAIL`;
   document.querySelector('#modal-title').textContent = unit.title;
   document.querySelector('#modal-lead').textContent = unit.left.lead;
-  document.querySelector('#modal-gallery').innerHTML = gallery;
-  document.querySelector('#modal-body').innerHTML = `${paragraphs}<dl>${facts}</dl>`;
+  document.querySelector('#modal-body').innerHTML = `${paragraphs}<dl class="detail-facts">${facts}</dl>`;
+  document.querySelector('#modal-gallery').innerHTML = unit.hotspots
+    .map(
+      (hotspot) => `
+        <figure>
+          <img src="${hotspot.image}" alt="${hotspot.title}" loading="lazy" />
+          <figcaption>${hotspot.title} · ${hotspot.caption || ''}</figcaption>
+        </figure>`
+    )
+    .join('');
+
   modal.hidden = false;
   document.body.style.overflow = 'hidden';
 }
@@ -141,6 +155,77 @@ function openProject(unit) {
 function closeProject() {
   modal.hidden = true;
   document.body.style.overflow = '';
+}
+
+function initScratch() {
+  const wrap = document.querySelector('#scratch-wrap');
+  const canvas = document.querySelector('#scratch-canvas');
+  const reset = document.querySelector('#scratch-reset');
+  if (!wrap || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width = 0;
+  let height = 0;
+  let drawing = false;
+  let last = null;
+
+  function paintCover() {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = '#ff2e93';
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  function resize() {
+    const rect = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = rect.width;
+    height = rect.height;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    paintCover();
+  }
+
+  function position(event) {
+    const rect = canvas.getBoundingClientRect();
+    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+  }
+
+  function scratch(point) {
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = 54;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    if (last) {
+      ctx.moveTo(last.x, last.y);
+      ctx.lineTo(point.x, point.y);
+      ctx.stroke();
+    } else {
+      ctx.arc(point.x, point.y, 27, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    last = point;
+  }
+
+  canvas.addEventListener('pointerdown', (event) => {
+    drawing = true;
+    last = null;
+    canvas.setPointerCapture?.(event.pointerId);
+    scratch(position(event));
+  });
+  canvas.addEventListener('pointermove', (event) => {
+    if (drawing) scratch(position(event));
+  });
+  const stop = () => {
+    drawing = false;
+    last = null;
+  };
+  canvas.addEventListener('pointerup', stop);
+  canvas.addEventListener('pointercancel', stop);
+  reset?.addEventListener('click', paintCover);
+  window.addEventListener('resize', resize);
+
+  resize();
 }
 
 function bindEvents() {
@@ -151,9 +236,14 @@ function bindEvents() {
     if (unit) openProject(unit);
   });
 
-  modal.querySelectorAll('[data-close]').forEach((element) => {
-    element.addEventListener('click', closeProject);
+  document.querySelector('#rail-prev')?.addEventListener('click', () => {
+    grid.scrollBy({ left: -grid.clientWidth * 0.7, behavior: 'smooth' });
   });
+  document.querySelector('#rail-next')?.addEventListener('click', () => {
+    grid.scrollBy({ left: grid.clientWidth * 0.7, behavior: 'smooth' });
+  });
+
+  modal.querySelectorAll('[data-close]').forEach((element) => element.addEventListener('click', closeProject));
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !modal.hidden) closeProject();
   });
@@ -220,4 +310,5 @@ renderWorks();
 bindEvents();
 bindNavigation();
 bindCursorGlow();
+initScratch();
 observeReveals();

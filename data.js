@@ -4,9 +4,9 @@ const MODEL = './public/models/';
 export const siteMeta = {
   name: '陈烁羽',
   englishName: 'CHEN SHUOYU',
-  role: '视觉设计 / 插画 / 交互设计',
+  role: '交互 / 信息可视化 / 数字叙事',
   email: '1849855748@qq.com',
-  intro: '把想法折进纸里，再把纸摊开成一片可以走进去的风景。',
+  intro: '陈烁羽｜湖北美术学院 艺术与科技专业，交互 / 信息可视化 / 数字叙事。',
 };
 
 export const units = [
@@ -17,21 +17,21 @@ export const units = [
     kicker: 'ABOUT · 01',
     tag: '个人档案',
     title: '在纸页之间，认识我',
-    lead: '你好，我是陈烁羽。喜欢在艺术与技术之间，用纸艺与三维构建可踏入的叙事空间。',
+    lead: '陈烁羽｜湖北美术学院 艺术与科技专业，交互 / 信息可视化 / 数字叙事，熟练使用 Touch designer、UE、Figma、PS、SketchUp 等工具。',
     layout: 'intro',
     skills: [
-      { name: '纸艺装置', level: 92, note: '概念到落地' },
-      { name: '插画与视觉叙事', level: 88, note: '手绘 / 数字' },
-      { name: '交互原型', level: 82, note: 'Three.js · 原生 JS' },
-      { name: '动态视觉', level: 76, note: '节奏 / 缓动' },
+      { name: 'Figma', level: 93, note: '界面 / 展板' },
+      { name: 'TouchDesigner', level: 88, note: '交互 / 生成视觉' },
+      { name: 'Photoshop', level: 86, note: '图像 / 后期' },
+      { name: 'UE', level: 82, note: '空间 / 实时' },
+      { name: 'SketchUp', level: 78, note: '空间 / 模型' },
     ],
     model: `${MODEL}intro.gltf`,
     camera: { radius: 6.2, theta: 0.42, phi: 1.12, target: [0, 1.02, 0] },
     left: {
-      lead: '你好，我是陈烁羽。喜欢在艺术与技术之间，用纸艺与三维构建可踏入的叙事空间。',
+      lead: '陈烁羽｜湖北美术学院 艺术与科技专业，交互 / 信息可视化 / 数字叙事，熟练使用 Touch designer、UE、Figma、PS、SketchUp 等工具。',
       paragraphs: [
-        '我的创作横跨手绘插画、视觉叙事与交互原型。不局限于平面画面，热衷于把创意转化为有纵深、可感知的沉浸式体验。',
-        '这本立体书作品集本身就是一次实践:将手绘、设计、交互项目收纳进一套翻书叙事语言,用3D纸艺的方式展示我的创作。',
+        '擅长把艺术表达和技术逻辑结合，喜欢挖掘主题背后的故事，做兼具叙事感与体验感的交互作品；关注数据可视化、空间数字体验与非遗数字化方向，习惯从用户视角出发打磨方案，乐于在跨媒介创作里不断尝试新的表达形式。',
       ],
       facts: [
         { label: '专业方向', value: '艺术与科技' },

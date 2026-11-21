@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="陈烁羽的个人作品集 · 视觉设计、插画、交互与装置艺术。" />
+    <meta name="description" content="陈烁羽的个人作品集 · 交互 / 信息可视化 / 数字叙事。" />
     <title>陈烁羽 · 个人作品集</title>
-    <link rel="stylesheet" href="./styles.css?v=20261121a" />
+    <link rel="stylesheet" href="./styles.css?v=20261121b" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -24,28 +24,41 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">CHEN SHUOYU · PORTFOLIO 2026</span>
-          <h1>欢迎来到我的<br /><em>个人网站</em></h1>
-          <p class="hero-lead">我是陈烁羽，一名穿梭在艺术与技术之间的创作者。用纸艺、插画与交互，把想法折成可以走进去的风景。</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#about">了解更多 <span>→</span></a>
-            <a class="btn btn-ghost" href="#works">查看作品</a>
+        <div class="hero-meta">
+          <span>CHEN SHUOYU · 2026</span>
+          <span>INTERACTION / VISUAL DESIGN</span>
+          <span>SCROLL TO EXPLORE ↓</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-im">I'm</span>
+          <span class="hero-name">CHEN SHUOYU</span>
+        </h1>
+
+        <div class="scratch-wrap" id="scratch-wrap">
+          <div class="scratch-collage" aria-hidden="true">
+            <img src="./images/installation-poster.png" alt="" />
+            <img src="./images/wuhan-food-map.png" alt="" />
+            <img src="./images/lingquan-ip.jpg" alt="" />
+            <img src="./images/resonance-main.jpg" alt="" />
           </div>
+          <canvas id="scratch-canvas" aria-label="拖动刮开封面"></canvas>
+          <div class="scratch-copy">
+            <span>A Designer</span>
+            <strong>Welcome to my personal website</strong>
+          </div>
+          <button id="scratch-reset" class="scratch-reset" type="button">重新刮开 ↺</button>
+          <span class="scratch-hint">按住拖动，像刮刮乐一样看看里面</span>
         </div>
-        <div class="hero-visual reveal">
-          <div class="blob"></div>
-          <img id="hero-portrait" src="" alt="陈烁羽" />
-          <span class="hero-sticker">HELLO ^ ^</span>
-          <span class="hero-ring" aria-hidden="true"></span>
-        </div>
-        <div class="hero-scroll">向下滚动 ↓</div>
+
+        <a class="hero-enter" href="#about">进入网站 <span>↓</span></a>
+        <div class="hero-bottom" aria-hidden="true">WELCOME TO MY WEBSITE ✳ WELCOME TO MY WEBSITE ✳</div>
       </section>
 
       <div class="marquee" aria-hidden="true">
         <div class="marquee-track">
-          <span>VISUAL DESIGN ✳ ILLUSTRATION ✳ INTERACTION ✳ INSTALLATION ✳ IP DESIGN ✳&nbsp;</span>
-          <span>VISUAL DESIGN ✳ ILLUSTRATION ✳ INTERACTION ✳ INSTALLATION ✳ IP DESIGN ✳&nbsp;</span>
+          <span>INTERACTION ✳ INFORMATION VISUALIZATION ✳ DIGITAL NARRATIVE ✳&nbsp;</span>
+          <span>INTERACTION ✳ INFORMATION VISUALIZATION ✳ DIGITAL NARRATIVE ✳&nbsp;</span>
         </div>
       </div>
 
@@ -53,12 +66,12 @@
         <div class="section-head reveal">
           <span class="section-no">01 / ABOUT</span>
           <h2>关于我</h2>
-          <p>一点点介绍，一点点认真。</p>
+          <p>艺术表达 × 技术逻辑</p>
         </div>
         <div class="about-grid">
           <div class="about-photo reveal">
             <img id="about-portrait" src="" alt="个人图鉴" />
-            <span class="photo-tag">PROFILE · 2026</span>
+            <span class="photo-tag">CHEN SHUOYU · 2026</span>
           </div>
           <div class="about-content reveal">
             <p id="about-lead" class="about-lead"></p>
@@ -70,20 +83,28 @@
       </section>
 
       <section class="section works" id="works">
-        <div class="section-head reveal">
-          <span class="section-no">02 / WORKS</span>
-          <h2>我的作品</h2>
-          <p>从手绘到交互，从实体模型到 IP 形象。</p>
+        <div class="works-inner">
+          <div class="section-head light reveal">
+            <span class="section-no">02 / WORKS</span>
+            <h2>MY DESIGN WORKS</h2>
+            <p>点击作品，像打开一个新页面一样往下读。</p>
+          </div>
+          <div class="works-controls">
+            <div class="filters" id="work-filters" role="tablist" aria-label="作品分类"></div>
+            <div class="rail-actions">
+              <button id="rail-prev" type="button" aria-label="上一组作品">←</button>
+              <button id="rail-next" type="button" aria-label="下一组作品">→</button>
+            </div>
+          </div>
+          <div class="work-rail" id="work-grid"></div>
         </div>
-        <div class="filters" id="work-filters" role="tablist" aria-label="作品分类"></div>
-        <div class="work-grid" id="work-grid"></div>
       </section>
 
       <section class="section contact" id="contact">
         <div class="contact-copy reveal">
           <span class="section-no">03 / CONTACT</span>
           <h2>留一封信，<br />在下一页相见。</h2>
-          <p>合作、约稿、求职，或者只是想聊聊纸和屏幕，都欢迎给我写信。</p>
+          <p>合作、约稿、求职，或者只是想聊聊交互与数字叙事，都欢迎给我写信。</p>
           <a id="mail-link" class="mail-link" href="mailto:"></a>
           <div id="contact-facts" class="contact-facts"></div>
         </div>
@@ -106,18 +127,24 @@
 
     <div id="project-modal" class="modal" hidden>
       <div class="modal-backdrop" data-close></div>
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <article class="detail-sheet" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <button class="modal-close" type="button" data-close aria-label="关闭">×</button>
-        <span id="modal-kicker" class="section-no"></span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-lead" class="modal-lead"></p>
-        <div id="modal-gallery" class="modal-gallery"></div>
-        <div id="modal-body" class="modal-body"></div>
-      </div>
+        <div class="detail-top">
+          <span id="modal-kicker" class="section-no"></span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-lead" class="detail-lead"></p>
+        </div>
+        <div class="detail-grid">
+          <aside id="modal-meta" class="detail-meta"></aside>
+          <div id="modal-body" class="detail-text"></div>
+        </div>
+        <div class="detail-scroll-hint">继续向下滚动查看详细图 ↓</div>
+        <div id="modal-gallery" class="detail-gallery"></div>
+      </article>
     </div>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./main.js?v=20261121a"></script>
+    <script type="module" src="./main.js?v=20261121b"></script>
   </body>
 </html>
