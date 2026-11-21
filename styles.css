@@ -66,17 +66,32 @@ textarea {
   transition: background 300ms ease;
 }
 
+.cursor-glow[data-mode="pink"] {
+  background: radial-gradient(circle, rgba(255, 46, 147, 0.2), transparent 66%);
+}
+
+.cursor-glow[data-mode="blue"] {
+  background: radial-gradient(circle, rgba(98, 230, 255, 0.22), transparent 66%);
+  mix-blend-mode: screen;
+}
+
+.cursor-glow[data-mode="lime"] {
+  background: radial-gradient(circle, rgba(220, 255, 87, 0.2), transparent 66%);
+  mix-blend-mode: screen;
+}
+
 .cursor-glow[data-mode="dark"] {
-  background: radial-gradient(circle, rgba(98, 230, 255, 0.2), rgba(220, 255, 87, 0.06) 42%, transparent 70%);
+  background: radial-gradient(circle, rgba(98, 230, 255, 0.24), rgba(220, 255, 87, 0.08) 42%, transparent 70%);
+  mix-blend-mode: screen;
 }
 
 .scroll-progress {
   position: fixed;
   left: 0;
-  bottom: 0;
-  z-index: 120;
+  top: 64px;
+  z-index: 49;
   width: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--pink), var(--blue), var(--lime));
   box-shadow: 0 -2px 12px rgba(255, 46, 147, 0.35);
   transition: width 120ms ease-out;
@@ -1132,18 +1147,19 @@ main,
 }
 
 .modal-close {
-  position: absolute;
-  right: 18px;
-  top: 18px;
+  position: fixed;
+  right: 24px;
+  top: 24px;
   width: 40px;
   height: 40px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.32);
   color: #fff;
   font-size: 22px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 4;
+  backdrop-filter: blur(6px);
 }
 
 .toast {

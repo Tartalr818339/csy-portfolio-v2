@@ -1,4 +1,4 @@
-import { siteMeta, units } from './data.js?v=20261121h';
+import { siteMeta, units } from './data.js?v=20261121i';
 
 const intro = units.find((unit) => unit.id === 'intro');
 const contact = units.find((unit) => unit.id === 'contact');
@@ -77,20 +77,23 @@ function renderFilters() {
 
 function renderWorks(filter = '全部') {
   const list = workUnits.filter((unit) => filter === '全部' || categoryOf(unit) === filter);
+  const loop = list.length >= 5;
+  grid.dataset.loop = loop ? 'true' : 'false';
 
-  grid.innerHTML = list
-    .map((unit) => {
-      const image = unit.hotspots[0]?.image || '';
-      return `
-        <button class="work-card reveal" type="button" data-work-id="${unit.id}" title="${categoryOf(unit)}">
-          <img src="${image}" alt="${unit.title}" loading="lazy" />
-          <span class="work-arrow">↗</span>
-          <span class="work-info">
-            <h3>${unit.title}</h3>
-          </span>
-        </button>`;
-    })
-    .join('');
+  const cardMarkup = (unit, clone = false) => {
+    const image = unit.hotspots[0]?.image || '';
+    return `
+      <button class="work-card ${clone ? '' : 'reveal'}" type="button" data-work-id="${unit.id}" title="${categoryOf(unit)}" ${clone ? 'aria-hidden="true" tabindex="-1"' : ''}>
+        <img src="${image}" alt="${unit.title}" loading="lazy" />
+        <span class="work-arrow">↗</span>
+        <span class="work-info">
+          <h3>${unit.title}</h3>
+        </span>
+      </button>`;
+  };
+
+  const original = list.map((unit) => cardMarkup(unit)).join('');
+  grid.innerHTML = original + (loop ? list.map((unit) => cardMarkup(unit, true)).join('') : '');
 
   grid.scrollLeft = 0;
   observeReveals(grid);
@@ -210,7 +213,7 @@ function initScratch() {
 
 function initRailAutoScroll() {
   let paused = false;
-  let direction = 1;
+  let phase = 0;
   grid.addEventListener('pointerenter', () => { paused = true; });
   grid.addEventListener('pointerleave', () => { paused = false; });
 
@@ -229,16 +232,16 @@ function initRailAutoScroll() {
 
   function loop() {
     if (!paused && Date.now() > railPauseUntil && modal.hidden && grid.scrollWidth > grid.clientWidth) {
-      const max = grid.scrollWidth - grid.clientWidth;
-      let next = grid.scrollLeft + 0.9 * direction;
-      if (next >= max) {
-        next = max;
-        direction = -1;
-      } else if (next <= 0) {
-        next = 0;
-        direction = 1;
+      if (grid.dataset.loop === 'true') {
+        const half = grid.scrollWidth / 2;
+        let next = grid.scrollLeft + 0.9;
+        if (next >= half) next -= half;
+        grid.scrollLeft = next;
+      } else {
+        const max = grid.scrollWidth - grid.clientWidth;
+        phase += 0.006;
+        grid.scrollLeft = (max / 2) * (1 + Math.sin(phase));
       }
-      grid.scrollLeft = next;
       updateFocus();
     }
     requestAnimationFrame(loop);
@@ -289,20 +292,22 @@ function bindEvents() {
   updateScrollState();
 }
 
+const observedRevealTargets = new WeakSet();
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
+    });
+  },
+  { threshold: 0.12 }
+);
+
 function observeReveals(scope = document) {
-  const targets = scope.querySelectorAll('.reveal:not(.is-visible)');
-  if (!targets.length) return;
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.12 }
-  );
-  targets.forEach((target) => observer.observe(target));
+  scope.querySelectorAll('.reveal').forEach((target) => {
+    if (observedRevealTargets.has(target)) return;
+    observedRevealTargets.add(target);
+    revealObserver.observe(target);
+  });
 }
 
 function bindNavigation() {
@@ -329,7 +334,12 @@ function bindCursorGlow() {
   document.addEventListener('pointermove', (event) => {
     glow.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
     const under = document.elementFromPoint(event.clientX, event.clientY);
-    glow.dataset.mode = under?.closest('.works, .modal') ? 'dark' : 'light';
+    const section = under?.closest('.hero, .about, .works, .contact, .modal');
+    let mode = 'pink';
+    if (section?.classList.contains('works') || section?.classList.contains('modal')) mode = 'dark';
+    else if (section?.classList.contains('about')) mode = 'blue';
+    else if (section?.classList.contains('contact')) mode = 'lime';
+    glow.dataset.mode = mode;
   });
 }
 
